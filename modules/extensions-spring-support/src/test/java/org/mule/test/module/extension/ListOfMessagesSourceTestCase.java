@@ -13,7 +13,6 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.mule.test.heisenberg.extension.DEARadioSource.MESSAGES_PER_POLL;
-import org.mule.functional.junit4.ArtifactFunctionalTestCase;
 import org.mule.runtime.api.message.Message;
 import org.mule.runtime.core.api.MuleEventContext;
 import org.mule.runtime.core.api.lifecycle.Callable;
@@ -23,12 +22,9 @@ import org.mule.test.heisenberg.extension.model.types.DEAOfficerAttributes;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test - test class is not found when use on config xml (module's target/tests is not included in the app CL)
-public class ListOfMessagesSourceTestCase extends ArtifactFunctionalTestCase implements Callable {
+public class ListOfMessagesSourceTestCase extends AbstractExtensionFunctionalTestCase implements Callable {
 
   private static AtomicReference<List<Message>> capturedPayload = new AtomicReference<>(null);
   private static Latch latch = new Latch();
