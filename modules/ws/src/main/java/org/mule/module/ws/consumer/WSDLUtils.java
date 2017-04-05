@@ -25,6 +25,7 @@ import javax.wsdl.Definition;
 import javax.wsdl.Import;
 import javax.wsdl.Types;
 import javax.wsdl.extensions.schema.Schema;
+import javax.wsdl.extensions.schema.SchemaImport;
 import javax.wsdl.extensions.schema.SchemaReference;
 import javax.wsdl.extensions.soap.SOAPBinding;
 import javax.wsdl.extensions.soap.SOAPBody;
@@ -35,7 +36,6 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -45,7 +45,6 @@ public class WSDLUtils
     private static final String XML_NS_PREFIX = "xmlns:";
     private static final String XML_IMPORT_ELEMENT = "import";
     private static final String XML_INCLUDE_ELEMENT = "include";
-    private static final String XML_SCHEMA_LOCATION_ATTRIBUTE = "schemaLocation";
 
     /**
      * Returns all the XML schemas from a WSDL definition.
@@ -53,6 +52,11 @@ public class WSDLUtils
      * @throws TransformerException If unable to transform a Schema into String.
      */
     public static List<String> getSchemas(Definition wsdlDefinition) throws TransformerException
+    {
+        return getSchemas(wsdlDefinition, new ArrayList<String>(), new ArrayList<String>());
+    }
+
+    private static List<String> getSchemas(Definition wsdlDefinition, List<String> alreadyImportedSchemas, List<String> alreadyIncludedSchemas) throws TransformerException
     {
         Map<String, String> wsdlNamespaces = wsdlDefinition.getNamespaces();
         List<String> schemas = new ArrayList<String>();
@@ -70,21 +74,7 @@ public class WSDLUtils
             {
                 if (o instanceof javax.wsdl.extensions.schema.Schema)
                 {
-                    Schema schema = (Schema) o;
-                    for (Map.Entry<String, String> entry : wsdlNamespaces.entrySet())
-                    {
-                        boolean isDefault = StringUtils.isEmpty(entry.getKey());
-                        boolean containsNamespace = schema.getElement().hasAttribute(XML_NS_PREFIX + entry.getKey());
-
-                        if (!isDefault && !containsNamespace)
-                        {
-                            schema.getElement().setAttribute(XML_NS_PREFIX + entry.getKey(), entry.getValue());
-                        }
-                    }
-
-                    fixSchemaLocations(schema);
-
-                    schemas.add(schemaToString(schema));
+                    addSchema(wsdlNamespaces, schemas, (Schema) o, alreadyImportedSchemas, alreadyIncludedSchemas);
                 }
             }
         }
@@ -94,70 +84,97 @@ public class WSDLUtils
         {
             for (Import wsdlImport : (List<Import>) wsdlImportList)
             {
-                schemas.addAll(getSchemas(wsdlImport.getDefinition()));
+                schemas.addAll(getSchemas(wsdlImport.getDefinition(), alreadyImportedSchemas, alreadyIncludedSchemas));
             }
         }
 
         return schemas;
     }
 
-    /**
-     * Fixes schemaLocation attributes in a parsed schema, allowing references that do not contain
-     * a base path (for example, references to local schemas in the classpath) but not modifying external references.
-     */
-    private static void fixSchemaLocations(Schema schema)
+    private static void addSchema(Map<String, String> wsdlNamespaces, List<String> schemas, Schema schema, List<String> alreadyImportedSchemas, List<String> alreadyIncludedSchemas)
+            throws TransformerException
     {
-        String basePath = getBasePath(schema.getDocumentBaseURI());
+        for (Map.Entry<String, String> entry : wsdlNamespaces.entrySet())
+        {
+            boolean isDefault = StringUtils.isEmpty(entry.getKey());
+            boolean containsNamespace = schema.getElement().hasAttribute(XML_NS_PREFIX + entry.getKey());
+
+            if (!isDefault && !containsNamespace)
+            {
+                schema.getElement().setAttribute(XML_NS_PREFIX + entry.getKey(), entry.getValue());
+            }
+        }
+
+        removeIncludesAndImportsFrom(schema);
+        addSchemaImports(wsdlNamespaces, schemas, schema, alreadyImportedSchemas, alreadyIncludedSchemas);
+        addSchemaIncludes(wsdlNamespaces, schemas, schema, alreadyImportedSchemas, alreadyIncludedSchemas);
+
+        schemas.add(schemaToString(schema));
+    }
+
+    private static void addSchemaImports(Map<String, String> wsdlNamespaces, List<String> schemas, Schema schema, List<String> alreadyImportedSchemas, List<String> alreadyIncludedSchemas)
+            throws TransformerException
+    {
+        for (Object imp : schema.getImports().values())
+        {
+            for (SchemaImport schemaImport : (java.util.Vector<SchemaImport>) imp)
+            {
+                if (alreadyImportedSchemas.contains(schemaImport.getSchemaLocationURI()))
+                {
+                    continue;
+                }
+                alreadyImportedSchemas.add(schemaImport.getSchemaLocationURI());
+                addSchema(wsdlNamespaces, schemas, schemaImport.getReferencedSchema(), alreadyImportedSchemas, alreadyIncludedSchemas);
+            }
+        }
+    }
+
+    private static void addSchemaIncludes(Map<String, String> wsdlNamespaces, List<String> schemas, Schema schema, List<String> alreadyImportedSchemas, List<String> alreadyIncludedSchemas)
+            throws TransformerException
+    {
+        for (Object item : schema.getIncludes())
+        {
+            SchemaReference schemaInclude = (SchemaReference) item;
+            if (alreadyImportedSchemas.contains(schemaInclude.getSchemaLocationURI()))
+            {
+                continue;
+            }
+            alreadyIncludedSchemas.add(schemaInclude.getSchemaLocationURI());
+            addSchema(wsdlNamespaces, schemas, schemaInclude.getReferencedSchema(), alreadyImportedSchemas, alreadyIncludedSchemas);
+        }
+    }
+
+    /**
+     * Removes includes and imports from schema as they were already stored
+     * in the WSDL definition.
+     */
+    private static void removeIncludesAndImportsFrom(Schema schema)
+    {
         Collection<List<SchemaReference>> schemaImportsCollection = schema.getImports().values();
         Collection<SchemaReference> schemaIncludesCollection = schema.getIncludes();
 
         if (!schemaImportsCollection.isEmpty() || !schemaIncludesCollection.isEmpty())
         {
-            // Fix schemaLocation values in POJO
-            //for imports
-            for (List<SchemaReference> schemaReferences : schemaImportsCollection)
-            {
-                fixSchemaReferencesLocations(basePath, schemaReferences);
-            }
-            //for includes
-            fixSchemaReferencesLocations(basePath, schemaIncludesCollection);
-
-
-            // Fix schemaLocation values in DOM
+            // remove includes and imports from dom so that they are not retrieved again
             NodeList children = schema.getElement().getChildNodes();
             for (int i = 0; i < children.getLength(); i++)
             {
                 Node item = children.item(i);
                 if (XML_IMPORT_ELEMENT.equals(item.getLocalName()) || XML_INCLUDE_ELEMENT.equals(item.getLocalName()))
                 {
-                    NamedNodeMap attributes = item.getAttributes();
-                    Node namedItem = attributes.getNamedItem(XML_SCHEMA_LOCATION_ATTRIBUTE);
-                    if (namedItem != null)
-                    {
-                        String schemaLocation = namedItem.getNodeValue();
-                        if (!schemaLocation.startsWith(basePath) && !schemaLocation.startsWith(HTTP.getScheme()))
-                        {
-                            namedItem.setNodeValue(basePath + schemaLocation);
-                        }
-                    }
+                    item.getParentNode().removeChild(item);
                 }
             }
         }
     }
 
-    private static void fixSchemaReferencesLocations(String basePath, Collection<SchemaReference> schemaReferences)
-    {
-        for (SchemaReference schemaReference : schemaReferences)
-        {
-            String schemaLocationURI = schemaReference.getSchemaLocationURI();
-            if (schemaLocationURI != null && !schemaLocationURI.startsWith(basePath) && !schemaLocationURI.startsWith(HTTP.getScheme()))
-            {
-                schemaReference.setSchemaLocationURI(basePath + schemaLocationURI);
-            }
-        }
-    }
-
-    private static String getBasePath(String documentURI)
+    /**
+     * Returns the base path from an URL string
+     * 
+     * @param documentURI URL string
+     * @return base path
+     */
+    public static String getBasePath(String documentURI)
     {
         File document = new File(documentURI);
         if (document.isDirectory())

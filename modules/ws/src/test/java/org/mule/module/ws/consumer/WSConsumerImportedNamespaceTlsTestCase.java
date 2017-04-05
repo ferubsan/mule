@@ -19,10 +19,8 @@ import org.junit.Test;
  * in the test app should be routed through the http requester configured with an insecure TLS context.
  * If an URLConnection is used instead of the http requester, the TLS context will not be used.
  */
-public class WSConsumerImportedNamespaceTlsTestCase extends AbstractWSDLServerTlsTestCase
+public class WSConsumerImportedNamespaceTlsTestCase extends AbstractWSDLHttpImportedSchemaServerTlsTestCase
 {
-    private static String WSDL_FILE_LOCATION = "/TestMainWsdl.wsdl";
-    
     @Override
     protected String getConfigFile()
     {
@@ -37,8 +35,4 @@ public class WSConsumerImportedNamespaceTlsTestCase extends AbstractWSDLServerTl
         assertThat(consumers.values().size(), equalTo(1));
     }
 
-    @Override
-    protected String getWsdlFileLocation() {
-        return WSDL_FILE_LOCATION;
-    }
 }

@@ -6,6 +6,8 @@
  */
 package org.mule.module.ws.consumer;
 
+import static org.apache.xmlbeans.impl.schema.StscImporter.resolveRelativePathInArchives;
+import static org.mule.module.ws.consumer.WSDLUtils.getBasePath;
 import static org.mule.transport.http.HttpConnector.HTTPS_URL_PROTOCOL;
 import static org.mule.transport.http.HttpConnector.HTTP_URL_PROTOCOL;
 
@@ -19,6 +21,7 @@ import org.mule.util.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -36,6 +39,8 @@ import org.xml.sax.InputSource;
 public class MuleWSDLLocator implements WSDLLocator
 {
     private static final Logger logger = LoggerFactory.getLogger(WSConsumer.class);
+    public static final String JAR = "jar";
+    public static final String ZIP = "zip";
 
     private String baseURI;
     private String latestImportedURI;
@@ -70,18 +75,37 @@ public class MuleWSDLLocator implements WSDLLocator
     @Override
     public InputSource getImportInputSource(String parentLocation, String importLocation)
     {
-
         try
         {
-            latestImportedURI = IOUtils.getResourceAsUrl(importLocation, getClass()).toString();
+            if (isHttpAddress(importLocation))
+            {
+                latestImportedURI = importLocation;
+            }
+            else
+            {
+                URL url = IOUtils.getResourceAsUrl(baseURI, getClass());
+                if (mustResolveRelativePaths(url))
+                {
+                    latestImportedURI = resolveRelativePathInArchives(getBasePath(url.toString()) + importLocation);
+                }
+                else
+                {
+                    latestImportedURI = getBasePath(url.toString()) + importLocation;
+                }
 
-            return getInputSource(importLocation);
+            }
+
+            return getInputSource(latestImportedURI);
         }
         catch (Exception e)
         {
-            throw new RuntimeException(e);
+            throw new RuntimeException("There has been an error retrieving the following wsdl resource: " + latestImportedURI, e);
         }
+    }
 
+    private boolean mustResolveRelativePaths(URL url)
+    {
+        return url.getProtocol().equals(JAR) || url.getProtocol().equals(ZIP);
     }
 
     private InputSource getInputSource(String url) throws WSDLException
