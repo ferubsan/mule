@@ -34,7 +34,7 @@ public class JmxMissingIdTestCase extends AbstractMuleTestCase {
     contextBuilder.setMuleConfiguration(config);
     muleContext =
         new DefaultMuleContextFactory()
-            .createMuleContext(asList(new TestServicesConfigurationBuilder(), new DefaultsConfigurationBuilder()),
+            .createMuleContext(asList(TestServicesConfigurationBuilder.mocks(), new DefaultsConfigurationBuilder()),
                                contextBuilder);
 
     muleContext.start();

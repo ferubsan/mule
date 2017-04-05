@@ -16,7 +16,7 @@ import org.mule.runtime.api.meta.model.declaration.fluent.ExtensionDeclarer;
 import org.mule.runtime.api.meta.model.declaration.fluent.OperationDeclaration;
 import org.mule.runtime.api.meta.model.declaration.fluent.SourceDeclaration;
 import org.mule.runtime.extension.internal.loader.DefaultExtensionLoadingContext;
-import org.mule.runtime.module.extension.internal.loader.java.JavaModelLoaderDelegate;
+import org.mule.runtime.module.extension.internal.loader.java.DefaultJavaModelLoaderDelegate;
 import org.mule.runtime.module.extension.internal.loader.java.property.ConfigTypeModelProperty;
 import org.mule.test.heisenberg.extension.HeisenbergExtension;
 
@@ -31,7 +31,7 @@ public class JavaConfigurationDeclarationEnricherTestCase {
 
   @Before
   public void setUp() {
-    ExtensionDeclarer declarer = new JavaModelLoaderDelegate(HeisenbergExtension.class, getProductVersion())
+    ExtensionDeclarer declarer = new DefaultJavaModelLoaderDelegate(HeisenbergExtension.class, getProductVersion())
         .declare(new DefaultExtensionLoadingContext(getClass().getClassLoader()));
     new JavaConfigurationDeclarationEnricher()
         .enrich(new DefaultExtensionLoadingContext(declarer, this.getClass().getClassLoader()));

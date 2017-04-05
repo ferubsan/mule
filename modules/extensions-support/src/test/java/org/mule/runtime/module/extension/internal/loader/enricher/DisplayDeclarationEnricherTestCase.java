@@ -28,7 +28,7 @@ import org.mule.runtime.api.meta.model.declaration.fluent.WithOperationsDeclarat
 import org.mule.runtime.api.meta.model.display.DisplayModel;
 import org.mule.runtime.core.util.CollectionUtils;
 import org.mule.runtime.extension.internal.loader.DefaultExtensionLoadingContext;
-import org.mule.runtime.module.extension.internal.loader.java.JavaModelLoaderDelegate;
+import org.mule.runtime.module.extension.internal.loader.java.DefaultJavaModelLoaderDelegate;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 import org.mule.test.heisenberg.extension.HeisenbergExtension;
 import org.mule.test.heisenberg.extension.HeisenbergOperations;
@@ -46,7 +46,7 @@ public class DisplayDeclarationEnricherTestCase extends AbstractMuleTestCase {
 
   @Before
   public void setUp() {
-    final JavaModelLoaderDelegate loader = new JavaModelLoaderDelegate(HeisenbergExtension.class, getProductVersion());
+    final DefaultJavaModelLoaderDelegate loader = new DefaultJavaModelLoaderDelegate(HeisenbergExtension.class, getProductVersion());
     declarer = loader.declare(new DefaultExtensionLoadingContext(getClass().getClassLoader()));
     new DisplayDeclarationEnricher().enrich(new DefaultExtensionLoadingContext(declarer, this.getClass().getClassLoader()));
   }

@@ -27,7 +27,7 @@ import org.mule.runtime.api.meta.model.declaration.fluent.ParameterDeclaration;
 import org.mule.runtime.api.meta.model.declaration.fluent.SourceDeclaration;
 import org.mule.runtime.extension.internal.loader.DefaultExtensionLoadingContext;
 import org.mule.runtime.extension.internal.property.MetadataKeyPartModelProperty;
-import org.mule.runtime.module.extension.internal.loader.java.JavaModelLoaderDelegate;
+import org.mule.runtime.module.extension.internal.loader.java.DefaultJavaModelLoaderDelegate;
 import org.mule.tck.junit4.AbstractMuleTestCase;
 import org.mule.tck.message.StringAttributes;
 import org.mule.test.metadata.extension.MetadataExtension;
@@ -47,7 +47,7 @@ public class DynamicMetadataDeclarationEnricherTestCase extends AbstractMuleTest
 
   @Before
   public void setUp() {
-    final JavaModelLoaderDelegate loader = new JavaModelLoaderDelegate(MetadataExtension.class, getProductVersion());
+    final DefaultJavaModelLoaderDelegate loader = new DefaultJavaModelLoaderDelegate(MetadataExtension.class, getProductVersion());
     ExtensionDeclarer declarer = loader.declare(new DefaultExtensionLoadingContext(getClass().getClassLoader()));
     new DynamicMetadataDeclarationEnricher()
         .enrich(new DefaultExtensionLoadingContext(declarer, this.getClass().getClassLoader()));

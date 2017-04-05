@@ -51,7 +51,7 @@ public class DomainContextBuilder {
   }
 
   protected void addBuilders(List<ConfigurationBuilder> builders) {
-    builders.add(new TestServicesConfigurationBuilder());
+    builders.add(TestServicesConfigurationBuilder.mocks());
   }
 
   protected ConfigurationBuilder getDomainBuilder(String configResource) throws Exception {

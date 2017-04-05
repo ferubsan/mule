@@ -31,7 +31,7 @@ import org.mule.runtime.extension.internal.loader.ExtensionModelFactory;
 import org.mule.runtime.module.extension.internal.AbstractAnnotationProcessorTestCase;
 import org.mule.runtime.module.extension.internal.capability.xml.TestExtensionWithDocumentation;
 import org.mule.runtime.module.extension.internal.loader.enricher.ExtensionDescriptionsEnricher;
-import org.mule.runtime.module.extension.internal.loader.java.JavaModelLoaderDelegate;
+import org.mule.runtime.module.extension.internal.loader.java.DefaultJavaModelLoaderDelegate;
 import org.mule.runtime.module.extension.internal.resources.documentation.ExtensionDocumentationResourceGenerator;
 import org.mule.tck.size.SmallTest;
 
@@ -68,7 +68,7 @@ public class ExtensionDescriptionDocumenterTestCase extends AbstractAnnotationPr
   @Test
   public void loadDocumentationFromFile() throws Exception {
     ExtensionLoadingContext ctx = new DefaultExtensionLoadingContext(Thread.currentThread().getContextClassLoader());
-    JavaModelLoaderDelegate loader = new JavaModelLoaderDelegate(TestExtensionWithDocumentation.class, "1.0.0-dev");
+    DefaultJavaModelLoaderDelegate loader = new DefaultJavaModelLoaderDelegate(TestExtensionWithDocumentation.class, "1.0.0-dev");
     loader.declare(ctx);
     ExtensionDescriptionsEnricher enricher = new ExtensionDescriptionsEnricher();
     enricher.enrich(ctx);
@@ -145,7 +145,8 @@ public class ExtensionDescriptionDocumenterTestCase extends AbstractAnnotationPr
         Element extension = extensionElements.iterator().next();
         assertThat(extension, instanceOf(TypeElement.class));
         ctx = new DefaultExtensionLoadingContext(Thread.currentThread().getContextClassLoader());
-        JavaModelLoaderDelegate loader = new JavaModelLoaderDelegate(TestExtensionWithDocumentation.class, "1.0.0-dev");
+        DefaultJavaModelLoaderDelegate
+          loader = new DefaultJavaModelLoaderDelegate(TestExtensionWithDocumentation.class, "1.0.0-dev");
         declaration = loader.declare(ctx).getDeclaration();
         declarer.document(declaration, (TypeElement) extension);
       }

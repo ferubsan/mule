@@ -60,7 +60,7 @@ public class MuleConfigurationTestCase extends AbstractMuleTestCase {
     MuleContextBuilder contextBuilder = new DefaultMuleContextBuilder();
     contextBuilder.setMuleConfiguration(config);
     muleContext = new DefaultMuleContextFactory()
-        .createMuleContext(asList(new TestServicesConfigurationBuilder(), new DefaultsConfigurationBuilder()), contextBuilder);
+        .createMuleContext(asList(TestServicesConfigurationBuilder.mocks(), new DefaultsConfigurationBuilder()), contextBuilder);
     muleContext.start();
 
     verifyConfiguration();
@@ -87,7 +87,7 @@ public class MuleConfigurationTestCase extends AbstractMuleTestCase {
     System.setProperty(MuleProperties.SYSTEM_PROPERTY_PREFIX + "transform.autoWrap", "false");
 
     muleContext = new DefaultMuleContextFactory()
-        .createMuleContext(new TestServicesConfigurationBuilder(), new DefaultsConfigurationBuilder());
+        .createMuleContext(TestServicesConfigurationBuilder.mocks(), new DefaultsConfigurationBuilder());
     muleContext.start();
 
     verifyConfiguration();
@@ -114,7 +114,7 @@ public class MuleConfigurationTestCase extends AbstractMuleTestCase {
   @Test
   public void testConfigureAfterInitFails() throws Exception {
     muleContext = new DefaultMuleContextFactory()
-        .createMuleContext(new TestServicesConfigurationBuilder(), new DefaultsConfigurationBuilder());
+        .createMuleContext(TestServicesConfigurationBuilder.mocks(), new DefaultsConfigurationBuilder());
 
     DefaultMuleConfiguration mutableConfig = ((DefaultMuleConfiguration) muleContext.getConfiguration());
 
@@ -145,7 +145,7 @@ public class MuleConfigurationTestCase extends AbstractMuleTestCase {
   /** Test for MULE-3110 */
   @Test
   public void testConfigureAfterStartFails() throws Exception {
-    muleContext = new DefaultMuleContextFactory().createMuleContext(new TestServicesConfigurationBuilder(),
+    muleContext = new DefaultMuleContextFactory().createMuleContext(TestServicesConfigurationBuilder.mocks(),
                                                                     new DefaultsConfigurationBuilder());
     muleContext.start();
 

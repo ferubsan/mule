@@ -146,11 +146,11 @@
             <version>${parent.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mule</groupId>
-            <artifactId>mule-api</artifactId>
-            <version>${muleApiVersion}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.mule</groupId>-->
+            <!--<artifactId>mule-api</artifactId>-->
+            <!--<version>${muleApiVersion}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.mule.runtime</groupId>
             <artifactId>mule-service-soap-api</artifactId>

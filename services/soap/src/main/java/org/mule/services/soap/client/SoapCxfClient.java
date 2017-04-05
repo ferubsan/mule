@@ -10,6 +10,7 @@ import static java.lang.String.format;
 import static java.util.Collections.emptyList;
 import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
+import static org.apache.commons.lang.builder.ToStringBuilder.reflectionToString;
 import static org.mule.runtime.core.util.IOUtils.toDataHandler;
 import org.mule.metadata.xml.XmlTypeLoader;
 import org.mule.runtime.api.exception.MuleException;
@@ -95,7 +96,6 @@ public class SoapCxfClient implements SoapClient {
                 MessageDispatcher dispatcher,
                 SoapVersion version,
                 boolean isMtom) {
-
     this.client = client;
     this.introspecter = introspecter;
     this.loader = typeLoader;
@@ -115,7 +115,7 @@ public class SoapCxfClient implements SoapClient {
 
   @Override
   public void start() throws MuleException {
-    // do nothing
+    dispatcher.initialise();
   }
 
   /**
@@ -267,5 +267,10 @@ public class SoapCxfClient implements SoapClient {
       }
       return empty();
     }
+  }
+
+  @Override
+  public String toString() {
+    return reflectionToString(this);
   }
 }

@@ -43,7 +43,7 @@ public class OperationExecutionTestCase extends AbstractSoapServiceTestCase {
   @Description("Consumes an operation using a connection that uses a local .wsdl file")
   public void echoWithLocalWsdl() throws Exception {
     URL wsdl = currentThread().getContextClassLoader().getResource("wsdl/simple-service.wsdl");
-    TestSoapClient localWsdlClient = new TestSoapClient(wsdl.getPath(), defaultAddress, soapVersion);
+    TestSoapClient localWsdlClient = new TestSoapClient(wsdl.getPath(), server.getDefaultAddress(), soapVersion);
     testSimpleOperation(localWsdlClient);
   }
 

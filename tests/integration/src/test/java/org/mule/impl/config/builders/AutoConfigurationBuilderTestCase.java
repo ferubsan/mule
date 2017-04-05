@@ -32,7 +32,7 @@ public class AutoConfigurationBuilderTestCase extends AbstractMuleTestCase {
   @Test
   public void testConfigureSpring() throws ConfigurationException, InitialisationException {
     MuleContextFactory muleContextFactory = new DefaultMuleContextFactory();
-    MuleContext muleContext = muleContextFactory.createMuleContext(asList(new TestServicesConfigurationBuilder(),
+    MuleContext muleContext = muleContextFactory.createMuleContext(asList(TestServicesConfigurationBuilder.mocks(),
                                                                           new SimpleConfigurationBuilder(null),
                                                                           new AutoConfigurationBuilder("org/mule/test/spring/config1/test-xml-mule2-config.xml",
                                                                                                        emptyMap(), APP)),

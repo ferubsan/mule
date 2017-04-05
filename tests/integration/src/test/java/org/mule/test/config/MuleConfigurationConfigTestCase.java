@@ -50,7 +50,7 @@ public class MuleConfigurationConfigTestCase extends AbstractMuleTestCase {
     @Override
     protected void addBuilders(List<ConfigurationBuilder> builders) {
       super.addBuilders(builders);
-      builders.add(new TestServicesConfigurationBuilder());
+      builders.add(TestServicesConfigurationBuilder.mocks());
     }
   }
 }

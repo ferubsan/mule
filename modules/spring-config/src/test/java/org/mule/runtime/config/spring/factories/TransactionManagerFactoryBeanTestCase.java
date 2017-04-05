@@ -30,7 +30,7 @@ public class TransactionManagerFactoryBeanTestCase extends AbstractMuleTestCase 
   @Test
   public void registerTransactionManager() throws Exception {
     DefaultMuleContext context =
-        (DefaultMuleContext) new DefaultMuleContextFactory().createMuleContext(new TestServicesConfigurationBuilder(),
+        (DefaultMuleContext) new DefaultMuleContextFactory().createMuleContext(TestServicesConfigurationBuilder.mocks(),
                                                                                new DefaultsConfigurationBuilder());
 
     TransactionManagerFactoryBean txMgrFB = new TransactionManagerFactoryBean();
@@ -43,7 +43,7 @@ public class TransactionManagerFactoryBeanTestCase extends AbstractMuleTestCase 
   @Test
   public void registerCustomTransactionManager() throws Exception {
     DefaultMuleContext context =
-        (DefaultMuleContext) new DefaultMuleContextFactory().createMuleContext(new TestServicesConfigurationBuilder(),
+        (DefaultMuleContext) new DefaultMuleContextFactory().createMuleContext(TestServicesConfigurationBuilder.mocks(),
                                                                                new DefaultsConfigurationBuilder());
 
     TransactionManagerFactoryBean txMgrFB = new TransactionManagerFactoryBean();
@@ -57,7 +57,7 @@ public class TransactionManagerFactoryBeanTestCase extends AbstractMuleTestCase 
   @Test
   public void ignoreCustomTransactionManager() throws Exception {
     DefaultMuleContext context =
-        (DefaultMuleContext) new DefaultMuleContextFactory().createMuleContext(new TestServicesConfigurationBuilder(),
+        (DefaultMuleContext) new DefaultMuleContextFactory().createMuleContext(TestServicesConfigurationBuilder.mocks(),
                                                                                new DefaultsConfigurationBuilder());
 
     TransactionManagerFactoryBean txMgrFB = new TransactionManagerFactoryBean();

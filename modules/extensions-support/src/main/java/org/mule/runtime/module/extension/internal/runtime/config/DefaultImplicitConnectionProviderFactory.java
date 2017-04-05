@@ -52,8 +52,8 @@ public final class DefaultImplicitConnectionProviderFactory<T> implements Implic
 
           if (connectionProviderModel == null) {
             throw new IllegalStateException(format(
-                                                   "Configuration '%s' of extension '%s' does not define a connection provider and none can be created automatically. Please define one.",
-                                                   configurationModel.getName(), configurationModel.getName()));
+              "Configuration '%s' of extension '%s' does not define a connection provider and none can be created automatically. Please define one.",
+              configurationModel.getName(), configurationModel.getName()));
           }
           resolverSet = buildImplicitResolverSet(connectionProviderModel, muleContext);
           resolverSetProvider = () -> resolverSet;
@@ -70,9 +70,8 @@ public final class DefaultImplicitConnectionProviderFactory<T> implements Implic
   public <T> ConnectionProvider<T> createImplicitConnectionProvider(String configName, Event event) {
     ResolverSet resolverSet = resolverSetProvider.get();
     ConnectionProviderObjectBuilder<T> builder =
-        new ConnectionProviderObjectBuilder<>(connectionProviderModel, resolverSet, getConnectionManager(muleContext),
-                                              extensionModel,
-                                              muleContext);
+      new DefaultConnectionProviderObjectBuilder<>(connectionProviderModel, resolverSet, getConnectionManager(muleContext),
+                                                   extensionModel, muleContext);
     builder.setOwnerConfigName(configName);
     try {
       return builder.build(event);

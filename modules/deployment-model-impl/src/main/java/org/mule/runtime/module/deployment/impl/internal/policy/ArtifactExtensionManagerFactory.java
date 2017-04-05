@@ -10,8 +10,8 @@ package org.mule.runtime.module.deployment.impl.internal.policy;
 import static java.lang.String.format;
 import static org.mule.runtime.module.deployment.impl.internal.artifact.ArtifactExtensionManagerConfigurationBuilder.META_INF_FOLDER;
 import static org.mule.runtime.module.extension.internal.ExtensionProperties.EXTENSION_MANIFEST_FILE_NAME;
-import static org.mule.runtime.module.extension.internal.loader.java.JavaExtensionModelLoader.TYPE_PROPERTY_NAME;
-import static org.mule.runtime.module.extension.internal.loader.java.JavaExtensionModelLoader.VERSION;
+import static org.mule.runtime.module.extension.internal.loader.java.DefaultJavaExtensionModelLoader.TYPE_PROPERTY_NAME;
+import static org.mule.runtime.module.extension.internal.loader.java.DefaultJavaExtensionModelLoader.VERSION;
 import static org.slf4j.LoggerFactory.getLogger;
 import org.mule.runtime.api.deployment.meta.MulePluginModel;
 import org.mule.runtime.api.meta.model.ExtensionModel;
@@ -22,7 +22,7 @@ import org.mule.runtime.deployment.model.api.plugin.ArtifactPluginDescriptor;
 import org.mule.runtime.extension.api.loader.ExtensionModelLoader;
 import org.mule.runtime.extension.api.manifest.ExtensionManifest;
 import org.mule.runtime.module.extension.internal.loader.ExtensionModelLoaderRepository;
-import org.mule.runtime.module.extension.internal.loader.java.JavaExtensionModelLoader;
+import org.mule.runtime.module.extension.internal.loader.java.DefaultJavaExtensionModelLoader;
 import org.mule.runtime.module.extension.internal.manager.ExtensionManagerFactory;
 
 import java.net.URL;
@@ -76,7 +76,7 @@ public class ArtifactExtensionManagerFactory implements ExtensionManagerFactory 
         params.put(VERSION, extensionManifest.getVersion());
 
         extensionManager.registerExtension(
-                                           new JavaExtensionModelLoader()
+                                           new DefaultJavaExtensionModelLoader()
                                                .loadExtensionModel(artifactPlugin.getArtifactClassLoader().getClassLoader(),
                                                                    params));
       } else {

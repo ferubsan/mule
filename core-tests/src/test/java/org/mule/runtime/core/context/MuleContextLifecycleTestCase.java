@@ -57,7 +57,7 @@ public class MuleContextLifecycleTestCase extends AbstractMuleTestCase {
     lifecycleManager = new SensingLifecycleManager();
     ctxBuilder.setLifecycleManager(lifecycleManager);
     ctx = ctxBuilder.buildMuleContext();
-    new TestServicesConfigurationBuilder().configure(ctx);
+    TestServicesConfigurationBuilder.mocks().configure(ctx);
   }
 
   @After

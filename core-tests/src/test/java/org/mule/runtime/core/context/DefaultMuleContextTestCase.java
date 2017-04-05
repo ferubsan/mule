@@ -207,6 +207,6 @@ public class DefaultMuleContextTestCase extends AbstractMuleTestCase {
   }
 
   protected void createMuleContext() throws InitialisationException, ConfigurationException {
-    context = muleContextFactory.createMuleContext(new TestServicesConfigurationBuilder(), new DefaultsConfigurationBuilder());
+    context = muleContextFactory.createMuleContext(TestServicesConfigurationBuilder.mocks(), new DefaultsConfigurationBuilder());
   }
 }

@@ -42,53 +42,57 @@ import org.mule.runtime.module.extension.internal.loader.validation.ParameterGro
 import org.mule.runtime.module.extension.internal.loader.validation.ParameterTypeModelValidator;
 
 import java.util.List;
+import java.util.function.BiFunction;
 
-/**
- * Loads an extension by introspecting a class which uses the Extensions API annotations
- *
- * @since 4.0
- */
-public class JavaExtensionModelLoader extends ExtensionModelLoader {
+public class AbstractJavaExtensionModelLoader extends ExtensionModelLoader {
 
-  public static final String LOADER_ID = "java";
   public static final String TYPE_PROPERTY_NAME = "type";
   public static final String VERSION = "version";
 
   private final List<ExtensionModelValidator> customValidators = unmodifiableList(asList(
-                                                                                         new ConfigurationModelValidator(),
-                                                                                         new ConnectionProviderModelValidator(),
-                                                                                         new ExportedTypesModelValidator(),
-                                                                                         new JavaSubtypesModelValidator(),
-                                                                                         new MetadataComponentModelValidator(),
-                                                                                         new NullSafeModelValidator(),
-                                                                                         new OperationReturnTypeModelValidator(),
-                                                                                         new OperationParametersTypeModelValidator(),
-                                                                                         new ParameterGroupModelValidator(),
-                                                                                         new ParameterTypeModelValidator()));
+    new ConfigurationModelValidator(),
+    new ConnectionProviderModelValidator(),
+    new ExportedTypesModelValidator(),
+    new JavaSubtypesModelValidator(),
+    new MetadataComponentModelValidator(),
+    new NullSafeModelValidator(),
+    new OperationReturnTypeModelValidator(),
+    new OperationParametersTypeModelValidator(),
+    new ParameterGroupModelValidator(),
+    new ParameterTypeModelValidator()));
+
   private final List<DeclarationEnricher> customDeclarationEnrichers = unmodifiableList(asList(
-                                                                                               new ClassLoaderDeclarationEnricher(),
-                                                                                               new JavaXmlDeclarationEnricher(),
-                                                                                               new ConfigNameDeclarationEnricher(),
-                                                                                               new ConnectionDeclarationEnricher(),
-                                                                                               new ErrorsDeclarationEnricher(),
-                                                                                               new ConnectionErrorsDeclarationEnricher(),
-                                                                                               new DataTypeDeclarationEnricher(),
-                                                                                               new DisplayDeclarationEnricher(),
-                                                                                               new DynamicMetadataDeclarationEnricher(),
-                                                                                               new ImportedTypesDeclarationEnricher(),
-                                                                                               new JavaConfigurationDeclarationEnricher(),
-                                                                                               new JavaExportedTypesDeclarationEnricher(),
-                                                                                               new SubTypesDeclarationEnricher(),
-                                                                                               new ExtensionDescriptionsEnricher(),
-                                                                                               new ParameterLayoutOrderDeclarationEnricher()));
+    new ClassLoaderDeclarationEnricher(),
+    new JavaXmlDeclarationEnricher(),
+    new ConfigNameDeclarationEnricher(),
+    new ConnectionDeclarationEnricher(),
+    new ErrorsDeclarationEnricher(),
+    new ConnectionErrorsDeclarationEnricher(),
+    new DataTypeDeclarationEnricher(),
+    new DisplayDeclarationEnricher(),
+    new DynamicMetadataDeclarationEnricher(),
+    new ImportedTypesDeclarationEnricher(),
+    new JavaConfigurationDeclarationEnricher(),
+    new JavaExportedTypesDeclarationEnricher(),
+    new SubTypesDeclarationEnricher(),
+    new ExtensionDescriptionsEnricher(),
+    new ParameterLayoutOrderDeclarationEnricher()));
+
+  private final String id;
+  private final BiFunction<Class<?>, String, ModelLoaderDelegate> delegateFactory;
+
+  public AbstractJavaExtensionModelLoader(String id, BiFunction<Class<?>, String, ModelLoaderDelegate> delegate) {
+    this.id = id;
+    this.delegateFactory = delegate;
+  }
 
   /**
+
    * {@inheritDoc}
-   * @return {@link #LOADER_ID}
    */
   @Override
   public String getId() {
-    return LOADER_ID;
+    return id;
   }
 
   /**
@@ -107,8 +111,8 @@ public class JavaExtensionModelLoader extends ExtensionModelLoader {
   protected void declareExtension(ExtensionLoadingContext context) {
     Class<?> extensionType = getExtensionType(context);
     String version =
-        context.<String>getParameter(VERSION).orElseThrow(() -> new IllegalArgumentException("version not specified"));
-    new JavaModelLoaderDelegate(extensionType, version).declare(context);
+      context.<String>getParameter(VERSION).orElseThrow(() -> new IllegalArgumentException("version not specified"));
+    delegateFactory.apply(extensionType, version).declare(context);
   }
 
   private Class<?> getExtensionType(ExtensionLoadingContext context) {

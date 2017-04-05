@@ -49,7 +49,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * Helper class for declaring operations through a {@link JavaModelLoaderDelegate}
+ * Helper class for declaring operations through a {@link DefaultJavaModelLoaderDelegate}
  *
  * @since 4.0
  */
@@ -59,7 +59,7 @@ final class OperationModelLoaderDelegate extends AbstractModelLoaderDelegate {
 
   private final Map<MethodElement, OperationDeclarer> operationDeclarers = new HashMap<>();
 
-  OperationModelLoaderDelegate(JavaModelLoaderDelegate delegate) {
+  OperationModelLoaderDelegate(DefaultJavaModelLoaderDelegate delegate) {
     super(delegate);
   }
 
@@ -135,8 +135,8 @@ final class OperationModelLoaderDelegate extends AbstractModelLoaderDelegate {
       }
 
       addExecutionType(operation, operationMethod);
-      loader.declareMethodBasedParameters(operation, operationMethod.getParameters(),
-                                          new ParameterDeclarationContext(OPERATION, operation.getDeclaration()));
+      ParameterDeclarationContext declarationContext = new ParameterDeclarationContext(OPERATION, operation.getDeclaration());
+      loader.getMethodParametersLoader().declare(operation, operationMethod.getParameters(), declarationContext);
       calculateExtendedTypes(declaringClass, method, operation);
       operationDeclarers.put(operationMethod, operation);
     }
