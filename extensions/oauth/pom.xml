@@ -88,12 +88,12 @@
             <version>${project.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
+
         <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-sockets</artifactId>
             <version>${project.version}</version>
             <classifier>mule-plugin</classifier>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
