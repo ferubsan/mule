@@ -144,9 +144,9 @@ public class DependencyResolver {
       DependencyRequest dependencyRequest = new DependencyRequest();
       dependencyRequest.setRoot(node);
       dependencyRequest.setCollectRequest(collectRequest);
-      if (dependencyFilter != null) {
-        dependencyRequest.setFilter(dependencyFilter);
-      }
+      //if (dependencyFilter != null) {
+      //  dependencyRequest.setFilter(dependencyFilter);
+      //}
 
       node = system.resolveDependencies(session, dependencyRequest).getRoot();
     } catch (DependencyResolutionException e) {
