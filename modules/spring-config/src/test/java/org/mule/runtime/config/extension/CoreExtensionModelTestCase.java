@@ -25,7 +25,6 @@ import static org.mule.runtime.core.config.MuleManifest.getProductName;
 import static org.mule.runtime.core.config.MuleManifest.getProductVersion;
 import static org.mule.runtime.core.config.MuleManifest.getVendorName;
 import static org.mule.runtime.internal.dsl.DslConstants.CORE_PREFIX;
-
 import org.mule.metadata.api.annotation.TypeIdAnnotation;
 import org.mule.metadata.api.model.impl.DefaultAnyType;
 import org.mule.metadata.api.model.impl.DefaultArrayType;
@@ -41,7 +40,6 @@ import org.mule.runtime.api.meta.MuleVersion;
 import org.mule.runtime.api.meta.model.ExtensionModel;
 import org.mule.runtime.api.meta.model.error.ErrorModel;
 import org.mule.runtime.api.meta.model.operation.OperationModel;
-import org.mule.runtime.api.meta.model.operation.RouteModel;
 import org.mule.runtime.api.meta.model.operation.RouterModel;
 import org.mule.runtime.api.meta.model.operation.ScopeModel;
 import org.mule.runtime.api.meta.model.parameter.ParameterModel;
@@ -305,8 +303,8 @@ public class CoreExtensionModelTestCase extends AbstractMuleContextTestCase {
   public void foreach() {
     final ScopeModel foreachModel = (ScopeModel) coreExtensionModel.getOperationModel("foreach").get();
 
-    assertThat(foreachModel.getRouteModel().getMinOccurs(), is(1));
-    assertThat(foreachModel.getRouteModel().getMaxOccurs(), is(Optional.empty()));
+    assertThat(foreachModel.getMinOccurs(), is(1));
+    assertThat(foreachModel.getMaxOccurs(), is(Optional.empty()));
 
     assertThat(foreachModel.getErrorModels(), empty());
     assertThat(foreachModel.getExecutionType(), is(CPU_LITE));
@@ -374,9 +372,9 @@ public class CoreExtensionModelTestCase extends AbstractMuleContextTestCase {
 
     assertThat(choiceModel.getAllParameterModels(), empty());
 
-    assertThat(choiceModel.getRouteModels(), hasSize(2));
+    assertThat(choiceModel.getRoutes(), hasSize(2));
 
-    final RouteModel whenRouteModel = choiceModel.getRouteModels().get(0);
+    final ScopeModel whenRouteModel = choiceModel.getRoutes().get(0);
     assertThat(whenRouteModel.getName(), is("when"));
     assertThat(whenRouteModel.getMinOccurs(), is(1));
     assertThat(whenRouteModel.getMaxOccurs(), is(Optional.empty()));
@@ -387,7 +385,7 @@ public class CoreExtensionModelTestCase extends AbstractMuleContextTestCase {
     assertThat(whenRouteModel.getAllParameterModels().get(0).getType(), instanceOf(DefaultBooleanType.class));
     assertThat(whenRouteModel.getAllParameterModels().get(0).isRequired(), is(false));
 
-    final RouteModel otherwiseRouteModel = choiceModel.getRouteModels().get(1);
+    final ScopeModel otherwiseRouteModel = choiceModel.getRoutes().get(1);
     assertThat(otherwiseRouteModel.getName(), is("otherwise"));
     assertThat(otherwiseRouteModel.getMinOccurs(), is(0));
     assertThat(otherwiseRouteModel.getMaxOccurs().get(), is(1));
@@ -422,9 +420,9 @@ public class CoreExtensionModelTestCase extends AbstractMuleContextTestCase {
                is(AggregationStrategy.class.getName()));
     assertThat(scatterGatherModel.getAllParameterModels().get(2).isRequired(), is(false));
 
-    assertThat(scatterGatherModel.getRouteModels(), hasSize(1));
+    assertThat(scatterGatherModel.getRoutes(), hasSize(1));
 
-    final RouteModel routeModel = scatterGatherModel.getRouteModels().get(0);
+    final ScopeModel routeModel = scatterGatherModel.getRoutes().get(0);
     assertThat(routeModel.getName(), is("route"));
     assertThat(routeModel.getMinOccurs(), is(2));
     assertThat(routeModel.getMaxOccurs(), is(Optional.empty()));
@@ -435,8 +433,8 @@ public class CoreExtensionModelTestCase extends AbstractMuleContextTestCase {
   public void async() {
     final ScopeModel asyncModel = (ScopeModel) coreExtensionModel.getOperationModel("async").get();
 
-    assertThat(asyncModel.getRouteModel().getMinOccurs(), is(1));
-    assertThat(asyncModel.getRouteModel().getMaxOccurs(), is(Optional.empty()));
+    assertThat(asyncModel.getMinOccurs(), is(1));
+    assertThat(asyncModel.getMaxOccurs(), is(Optional.empty()));
 
     assertThat(asyncModel.getErrorModels(), empty());
     assertThat(asyncModel.getExecutionType(), is(CPU_LITE));

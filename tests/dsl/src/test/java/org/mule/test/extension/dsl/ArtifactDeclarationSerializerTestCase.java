@@ -243,7 +243,7 @@ public class ArtifactDeclarationSerializerTestCase extends AbstractElementModelT
                                    .build())
                 .getDeclaration())
             .withComponent(core.newRouter("choice")
-                .withRoute(core.newRoute("when")
+                .withRoute(core.newScope("when")
                     .withParameter("expression", "#[true]")
                     .withComponent(db.newOperation("bulkInsert")
                         .withParameter("sql",
@@ -261,7 +261,7 @@ public class ArtifactDeclarationSerializerTestCase extends AbstractElementModelT
                                            .build())
                         .getDeclaration())
                     .getDeclaration())
-                .withRoute(core.newRoute("otherwise")
+                .withRoute(core.newScope("otherwise")
                     .withComponent(core.newScope("foreach")
                         .withParameter("collection", "#[myCollection]")
                         .withComponent(core.newOperation("logger")

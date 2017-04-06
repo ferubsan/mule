@@ -1308,18 +1308,12 @@
       "blocking": true,
       "executionType": "CPU_LITE",
       "errors": [],
-      "routeModel": {
-         "minOccurs": 1,
-         "allowedStereotypes": [
-           {
-             "name": "foreacheable"
-           }
-         ],
-         "parameterGroupModels": [],
-         "name": "body",
-         "description": "",
-         "modelProperties": {}
-       },
+      "minOccurs": 1,
+      "allowedStereotypes": [
+        {
+          "name": "foreacheable"
+        }
+      ],
        "output": {
         "type": {
           "format": "java",
@@ -1550,8 +1544,13 @@
       "blocking": true,
       "executionType": "CPU_LITE",
       "errors": [],
-      "routeModels": [
+      "routes": [
         {
+          "name": "when",
+          "kind": "scope",
+          "blocking": true,
+          "executionType": "CPU_LITE",
+          "errors": [],
           "minOccurs": 1,
           "parameterGroupModels": [
             {
@@ -1587,15 +1586,96 @@
               ]
             }
           ],
-          "name": "when",
+          "output": {
+            "type": {
+              "format": "java",
+              "type": "Any"
+            },
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {}
+          },
+          "outputAttributes": {
+            "type": {
+              "format": "java",
+              "type": "Object",
+              "annotations": {
+                "typeId": "org.mule.runtime.api.message.NullAttributes",
+                "classInformation": {
+                  "hasDefaultConstructor": false,
+                  "isInterface": false,
+                  "isInstantiable": false,
+                  "isAbstract": false,
+                  "isFinal": true,
+                  "implementedInterfaces": [
+                    "org.mule.runtime.api.message.Attributes"
+                  ],
+                  "parent": "",
+                  "genericTypes": []
+                },
+                "typeAlias": {
+                  "value": "NullAttributes"
+                }
+              },
+              "fields": []
+            },
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {}
+          },
+          "transactional": false,
+          "requiresConnection": false,
           "description": "",
           "modelProperties": {}
         },
         {
+          "name": "otherwise",
+          "kind": "scope",
+          "blocking": true,
+          "executionType": "CPU_LITE",
+          "errors": [],
           "minOccurs": 0,
           "maxOccurs": 1,
           "parameterGroupModels": [],
-          "name": "otherwise",
+          "output": {
+            "type": {
+              "format": "java",
+              "type": "Any"
+            },
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {}
+          },
+          "outputAttributes": {
+            "type": {
+              "format": "java",
+              "type": "Object",
+              "annotations": {
+                "typeId": "org.mule.runtime.api.message.NullAttributes",
+                "classInformation": {
+                  "hasDefaultConstructor": false,
+                  "isInterface": false,
+                  "isInstantiable": false,
+                  "isAbstract": false,
+                  "isFinal": true,
+                  "implementedInterfaces": [
+                    "org.mule.runtime.api.message.Attributes"
+                  ],
+                  "parent": "",
+                  "genericTypes": []
+                },
+                "typeAlias": {
+                  "value": "NullAttributes"
+                }
+              },
+              "fields": []
+            },
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {}
+          },
+          "transactional": false,
+          "requiresConnection": false,
           "description": "",
           "modelProperties": {}
         }
@@ -1649,11 +1729,54 @@
       "blocking": true,
       "executionType": "CPU_LITE",
       "errors": [],
-      "routeModels": [
+      "routes": [
         {
-          "minOccurs": 2,
-          "parameterGroupModels": [],
           "name": "route",
+          "minOccurs": 2,
+          "kind": "scope",
+          "blocking": true,
+          "executionType": "CPU_LITE",
+          "errors": [],
+          "output": {
+            "type": {
+              "format": "java",
+              "type": "Any"
+            },
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {}
+          },
+          "outputAttributes": {
+            "type": {
+              "format": "java",
+              "type": "Object",
+              "annotations": {
+                "typeId": "org.mule.runtime.api.message.NullAttributes",
+                "classInformation": {
+                  "hasDefaultConstructor": false,
+                  "isInterface": false,
+                  "isInstantiable": false,
+                  "isAbstract": false,
+                  "isFinal": true,
+                  "implementedInterfaces": [
+                    "org.mule.runtime.api.message.Attributes"
+                  ],
+                  "parent": "",
+                  "genericTypes": []
+                },
+                "typeAlias": {
+                  "value": "NullAttributes"
+                }
+              },
+              "fields": []
+            },
+            "hasDynamicType": false,
+            "description": "",
+            "modelProperties": {}
+          },
+          "transactional": false,
+          "requiresConnection": false,
+          "parameterGroupModels": [],
           "description": "",
           "modelProperties": {}
         }
@@ -1810,13 +1933,7 @@
       "blocking": true,
       "executionType": "CPU_LITE",
       "errors": [],
-      "routeModel": {
-        "minOccurs": 1,
-        "parameterGroupModels": [],
-        "name": "body",
-        "description": "",
-        "modelProperties": {}
-      },
+      "minOccurs": 1,
       "output": {
         "type": {
           "format": "java",
