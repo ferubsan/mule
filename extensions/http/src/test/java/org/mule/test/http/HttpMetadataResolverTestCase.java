@@ -7,8 +7,8 @@
 package org.mule.test.http;
 
 import static org.mule.runtime.api.component.location.Location.builder;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
-import static org.mule.test.allure.story.AllureHttpStory.HTTP_METADATA;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HttpStory.METADATA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.hasItems;
@@ -48,7 +48,7 @@ import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
 @Features(HTTP_EXTENSION)
-@Stories(HTTP_METADATA)
+@Stories(METADATA)
 public class HttpMetadataResolverTestCase extends AbstractHttpTestCase {
 
   private MetadataService service;

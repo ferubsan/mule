@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 import static org.mule.runtime.api.metadata.MediaType.ANY;
 import static org.mule.runtime.api.metadata.MediaType.parse;
 import static org.mule.service.http.api.HttpHeaders.Values.APPLICATION_X_WWW_FORM_URLENCODED;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 
 import org.mule.runtime.api.metadata.MediaType;
 import org.mule.runtime.core.api.Event;

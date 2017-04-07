@@ -10,7 +10,7 @@ import static org.mule.service.http.api.HttpConstants.HttpStatus.INTERNAL_SERVER
 import static org.mule.service.http.api.HttpConstants.HttpStatus.OK;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.UNAUTHORIZED;
 import static org.mule.service.http.api.HttpHeaders.Names.WWW_AUTHENTICATE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.mule.test.module.http.functional.matcher.HttpResponseReasonPhraseMatcher.hasReasonPhrase;
 import static org.mule.test.module.http.functional.matcher.HttpResponseStatusCodeMatcher.hasStatusCode;
 import static java.lang.String.format;

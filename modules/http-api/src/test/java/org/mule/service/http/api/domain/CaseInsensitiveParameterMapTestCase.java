@@ -7,7 +7,7 @@
 
 package org.mule.service.http.api.domain;
 
-import static org.mule.test.allure.feature.AllureFeature.HTTP_SERVICE;
+import static org.mule.test.allure.AllureConstants.HTTP_SERVICE;
 import static org.mule.test.allure.story.AllureHttpStory.HTTP_MULTI_MAP;
 import static java.util.Arrays.asList;
 import static org.hamcrest.core.Is.is;

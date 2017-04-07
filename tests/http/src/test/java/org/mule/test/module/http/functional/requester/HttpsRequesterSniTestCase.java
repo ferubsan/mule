@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeThat;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 
 import org.mule.runtime.core.exception.MessagingException;
 import org.mule.runtime.core.api.security.tls.TlsConfiguration;

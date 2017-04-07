@@ -9,7 +9,7 @@ package org.mule.test.module.http.functional.listener;
 import static org.mule.runtime.core.api.context.notification.ServerNotification.getActionName;
 import static org.mule.runtime.core.context.notification.ConnectorMessageNotification.MESSAGE_RECEIVED;
 import static org.mule.runtime.core.context.notification.ConnectorMessageNotification.MESSAGE_RESPONSE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.mule.test.module.http.functional.TestConnectorMessageNotificationListener.register;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;

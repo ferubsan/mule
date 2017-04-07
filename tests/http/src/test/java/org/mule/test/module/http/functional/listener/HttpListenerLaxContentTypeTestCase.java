@@ -9,7 +9,7 @@ package org.mule.test.module.http.functional.listener;
 
 import static org.mule.service.http.api.HttpConstants.HttpStatus.OK;
 import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_TYPE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;

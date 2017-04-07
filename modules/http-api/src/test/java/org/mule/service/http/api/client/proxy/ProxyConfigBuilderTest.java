@@ -6,7 +6,7 @@
  */
 package org.mule.service.http.api.client.proxy;
 
-import static org.mule.test.allure.feature.AllureFeature.HTTP_SERVICE;
+import static org.mule.test.allure.AllureConstants.HTTP_SERVICE;
 import static org.mule.test.allure.story.AllureHttpStory.HTTP_PROXY_CONFIG_BUILDER;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;

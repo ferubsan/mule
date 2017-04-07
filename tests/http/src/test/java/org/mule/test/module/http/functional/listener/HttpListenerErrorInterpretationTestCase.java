@@ -22,8 +22,8 @@ import static org.mule.service.http.api.HttpConstants.HttpStatus.SERVICE_UNAVAIL
 import static org.mule.service.http.api.HttpConstants.HttpStatus.TOO_MANY_REQUESTS;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.UNAUTHORIZED;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.UNSUPPORTED_MEDIA_TYPE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
-import static org.mule.test.allure.story.AllureHttpStory.HTTP_ERROR_HANDLING;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HttpStory.ERROR_HANDLING;
 import static org.mule.test.module.http.functional.matcher.HttpResponseContentStringMatcher.body;
 import static org.mule.test.module.http.functional.matcher.HttpResponseHeaderStringMatcher.header;
 import static org.mule.test.module.http.functional.matcher.HttpResponseReasonPhraseMatcher.hasReasonPhrase;
@@ -60,7 +60,7 @@ import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
 @Features(HTTP_EXTENSION)
-@Stories({HTTP_ERROR_HANDLING, "Errors"})
+@Stories({ERROR_HANDLING, "Errors"})
 public class HttpListenerErrorInterpretationTestCase extends AbstractHttpTestCase {
 
   public static final String HEADER_NAME = "X-Custom";

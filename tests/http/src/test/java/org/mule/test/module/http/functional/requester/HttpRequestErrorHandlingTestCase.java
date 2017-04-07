@@ -19,8 +19,8 @@ import static org.mule.service.http.api.HttpConstants.HttpStatus.SERVICE_UNAVAIL
 import static org.mule.service.http.api.HttpConstants.HttpStatus.TOO_MANY_REQUESTS;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.UNAUTHORIZED;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.UNSUPPORTED_MEDIA_TYPE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
-import static org.mule.test.allure.story.AllureHttpStory.HTTP_ERROR_HANDLING;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HttpStory.ERROR_HANDLING;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
@@ -43,8 +43,8 @@ import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
-@Features({HTTP_ERROR_HANDLING, HTTP_EXTENSION})
-@Stories("Errors")
+@Features(HTTP_EXTENSION)
+@Stories({ERROR_HANDLING, "Errors"})
 public class HttpRequestErrorHandlingTestCase extends AbstractHttpRequestTestCase {
 
   @Rule

@@ -6,7 +6,7 @@
  */
 package org.mule.test.module.http.functional.listener;
 
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import org.mule.runtime.core.api.construct.Flow;

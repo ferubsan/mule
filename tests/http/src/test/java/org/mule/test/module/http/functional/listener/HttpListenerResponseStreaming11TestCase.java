@@ -6,7 +6,7 @@
  */
 package org.mule.test.module.http.functional.listener;
 
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 
 import org.apache.http.HttpVersion;
 import org.junit.Test;

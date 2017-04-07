@@ -9,7 +9,7 @@ package org.mule.test.module.http.functional.requester;
 import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 import static org.mule.service.http.api.HttpHeaders.Names.AUTHORIZATION;
 import static org.mule.service.http.api.HttpHeaders.Names.WWW_AUTHENTICATE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 
 import org.mule.test.runner.RunnerDelegateTo;
 

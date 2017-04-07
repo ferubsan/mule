@@ -10,7 +10,7 @@ package org.mule.test.http;
 import static org.mule.runtime.core.internal.connection.ConnectionProviderWrapper.unwrapProviderWrapper;
 import static org.mule.service.http.api.HttpConstants.Protocols.HTTP;
 import static org.mule.service.http.api.HttpConstants.Protocols.HTTPS;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.mule.test.module.extension.internal.util.ExtensionsTestUtils.getConfigurationInstanceFromRegistry;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;

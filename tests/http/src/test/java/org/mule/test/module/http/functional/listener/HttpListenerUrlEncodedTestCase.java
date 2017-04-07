@@ -11,7 +11,7 @@ import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_LENGTH;
 import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_TYPE;
 import static org.mule.service.http.api.HttpHeaders.Values.APPLICATION_X_WWW_FORM_URLENCODED;
 import static org.mule.service.http.api.utils.HttpEncoderDecoderUtils.decodeUrlEncodedBody;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.mule.test.module.http.functional.matcher.ParamMapMatcher.isEqual;
 import static com.google.common.base.Charsets.UTF_8;
 import static org.apache.http.HttpVersion.HTTP_1_0;

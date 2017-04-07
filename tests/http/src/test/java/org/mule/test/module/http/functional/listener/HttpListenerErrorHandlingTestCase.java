@@ -6,8 +6,8 @@
  */
 package org.mule.test.module.http.functional.listener;
 
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
-import static org.mule.test.allure.story.AllureHttpStory.HTTP_ERROR_HANDLING;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HttpStory.ERROR_HANDLING;
 import static org.apache.http.client.fluent.Request.Get;
 
 import org.apache.http.HttpResponse;
@@ -17,7 +17,7 @@ import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
 @Features(HTTP_EXTENSION)
-@Stories(HTTP_ERROR_HANDLING)
+@Stories(ERROR_HANDLING)
 public class HttpListenerErrorHandlingTestCase extends AbstractHttpListenerErrorHandlingTestCase {
 
   @Override

@@ -11,7 +11,7 @@ import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mule.functional.junit4.matchers.MessageMatchers.hasPayload;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 
 import org.mule.runtime.api.message.Message;
 import org.mule.tck.junit4.rule.SystemProperty;

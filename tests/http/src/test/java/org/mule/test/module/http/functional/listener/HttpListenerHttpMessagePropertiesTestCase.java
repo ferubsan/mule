@@ -8,7 +8,7 @@ package org.mule.test.module.http.functional.listener;
 
 import static org.mule.service.http.api.HttpHeaders.Names.X_FORWARDED_FOR;
 import static org.mule.service.http.api.domain.HttpProtocol.HTTP_1_1;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.apache.http.client.fluent.Request.Post;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;

@@ -6,13 +6,11 @@
  */
 package org.mule.test.module.http.functional.requester;
 
+import static org.mule.service.http.api.HttpHeaders.Names.COOKIE;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mule.service.http.api.HttpHeaders.Names.COOKIE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
-
-import com.google.common.collect.Sets;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -21,6 +19,7 @@ import java.util.Set;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.common.collect.Sets;
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 

@@ -7,7 +7,7 @@
 package org.mule.test.module.http.functional.requester;
 
 import static org.mule.functional.junit4.matchers.MessageMatchers.hasPayload;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;

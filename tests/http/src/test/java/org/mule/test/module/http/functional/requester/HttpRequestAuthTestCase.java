@@ -6,10 +6,10 @@
  */
 package org.mule.test.module.http.functional.requester;
 
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
 
 import org.mule.runtime.core.api.Event;
 import org.mule.runtime.core.util.FileUtils;

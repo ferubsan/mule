@@ -11,7 +11,7 @@ import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_LENGTH;
 import static org.mule.service.http.api.HttpHeaders.Names.EXPECT;
 import static org.mule.service.http.api.HttpHeaders.Names.HOST;
 import static org.mule.service.http.api.HttpHeaders.Values.CONTINUE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static org.hamcrest.CoreMatchers.equalTo;

@@ -8,7 +8,7 @@ package org.mule.test.http.api.policy;
 
 import static org.mule.extension.http.api.policy.HttpRequestPolicyPointcutParametersFactory.PATH_PARAMETER_NAME;
 import static org.mule.runtime.api.component.ComponentIdentifier.builder;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static java.util.Collections.emptyMap;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;

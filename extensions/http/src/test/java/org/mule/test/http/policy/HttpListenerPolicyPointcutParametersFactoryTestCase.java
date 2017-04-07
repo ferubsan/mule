@@ -7,7 +7,7 @@
 package org.mule.test.http.policy;
 
 import static org.mule.runtime.api.component.ComponentIdentifier.builder;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;

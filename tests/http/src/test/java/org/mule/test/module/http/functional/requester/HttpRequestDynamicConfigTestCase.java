@@ -6,11 +6,6 @@
  */
 package org.mule.test.module.http.functional.requester;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
 import static org.mule.extension.http.internal.listener.HttpListener.HTTP_NAMESPACE;
 import static org.mule.functional.junit4.matchers.MessageMatchers.hasPayload;
 import static org.mule.functional.junit4.rules.ExpectedError.none;
@@ -18,7 +13,12 @@ import static org.mule.service.http.api.HttpConstants.Method.GET;
 import static org.mule.service.http.api.HttpConstants.Method.POST;
 import static org.mule.service.http.api.HttpHeaders.Names.HOST;
 import static org.mule.service.http.api.HttpHeaders.Names.TRANSFER_ENCODING;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertThat;
 
 import org.mule.extension.http.api.error.HttpError;
 import org.mule.functional.junit4.rules.ExpectedError;

@@ -19,7 +19,7 @@ import static org.mule.service.http.api.HttpHeaders.Names.HOST;
 import static org.mule.service.http.api.HttpHeaders.Names.TRANSFER_ENCODING;
 import static org.mule.service.http.api.HttpHeaders.Values.CHUNKED;
 import static org.mule.service.http.api.HttpHeaders.Values.CLOSE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 
 import org.mule.extension.http.api.HttpRequestAttributes;
 import org.mule.service.http.api.domain.ParameterMap;

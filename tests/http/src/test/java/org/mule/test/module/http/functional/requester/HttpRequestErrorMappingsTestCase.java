@@ -8,8 +8,8 @@ package org.mule.test.module.http.functional.requester;
 
 import static org.mule.functional.junit4.matchers.MessageMatchers.hasPayload;
 import static org.mule.functional.junit4.matchers.ThatMatcher.that;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
-import static org.mule.test.allure.story.AllureHttpStory.HTTP_ERROR_HANDLING;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HttpStory.ERROR_HANDLING;
 import static java.util.Collections.emptyMap;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -23,8 +23,8 @@ import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
-@Features({HTTP_ERROR_HANDLING, HTTP_EXTENSION})
-@Stories("Error Mappings")
+@Features(HTTP_EXTENSION)
+@Stories({ERROR_HANDLING, "Error Mappings"})
 public class HttpRequestErrorMappingsTestCase extends AbstractHttpTestCase {
 
   private static final String CONNECT_ERROR_MESSAGE = "Could not connect.";

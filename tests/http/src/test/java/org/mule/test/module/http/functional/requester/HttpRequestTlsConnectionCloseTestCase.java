@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 import static org.mule.functional.junit4.matchers.MessageMatchers.hasPayload;
 import static org.mule.service.http.api.HttpHeaders.Names.CONNECTION;
 import static org.mule.service.http.api.HttpHeaders.Values.CLOSE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 
 import org.mule.runtime.core.api.Event;
 

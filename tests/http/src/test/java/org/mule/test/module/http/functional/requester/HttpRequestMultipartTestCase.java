@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertThat;
 import static org.mule.functional.junit4.matchers.MultiPartPayloadMatchers.hasSize;
 import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_TYPE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 
 import org.mule.extension.http.api.HttpResponseAttributes;
 import org.mule.runtime.api.message.MultiPartPayload;

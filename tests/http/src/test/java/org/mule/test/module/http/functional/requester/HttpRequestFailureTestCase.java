@@ -6,8 +6,8 @@
  */
 package org.mule.test.module.http.functional.requester;
 
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.hamcrest.Matchers.containsString;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
 
 import org.mule.tck.junit4.rule.DynamicPort;
 import org.mule.test.module.http.functional.AbstractHttpTestCase;

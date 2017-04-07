@@ -10,8 +10,8 @@ import static org.mule.service.http.api.HttpConstants.Method.DELETE;
 import static org.mule.service.http.api.HttpConstants.Method.GET;
 import static org.mule.service.http.api.HttpConstants.Method.POST;
 import static org.mule.service.http.api.HttpConstants.Method.PUT;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
-import static org.mule.test.allure.story.AllureHttpStory.HTTP_REQUEST_URL;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HttpStory.REQUEST_BUILDER;
 import static java.lang.String.format;
 import static java.util.Collections.emptyMap;
 import static org.hamcrest.Matchers.is;
@@ -25,7 +25,7 @@ import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
 @Features(HTTP_EXTENSION)
-@Stories(HTTP_REQUEST_URL)
+@Stories(REQUEST_BUILDER)
 public class HttpRequestUrlTestCase extends AbstractHttpRequestTestCase {
 
   @Override

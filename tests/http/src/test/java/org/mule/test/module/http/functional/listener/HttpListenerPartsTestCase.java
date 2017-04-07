@@ -16,7 +16,7 @@ import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_TYPE;
 import static org.mule.service.http.api.HttpHeaders.Names.TRANSFER_ENCODING;
 import static org.mule.service.http.api.HttpHeaders.Values.CHUNKED;
 import static org.mule.service.http.api.HttpHeaders.Values.MULTIPART_FORM_DATA;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static java.lang.String.format;
 import static java.nio.charset.StandardCharsets.ISO_8859_1;
 import static java.util.Collections.emptyMap;

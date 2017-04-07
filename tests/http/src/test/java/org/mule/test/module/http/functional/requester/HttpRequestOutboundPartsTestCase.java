@@ -6,19 +6,20 @@
  */
 package org.mule.test.module.http.functional.requester;
 
-import static java.util.Collections.emptyMap;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.startsWith;
-import static org.junit.Assert.assertThat;
 import static org.mule.runtime.api.message.Message.builder;
 import static org.mule.runtime.api.metadata.MediaType.HTML;
 import static org.mule.runtime.api.metadata.MediaType.TEXT;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.OK;
 import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_DISPOSITION;
 import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_TYPE;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.mule.test.module.http.functional.matcher.HttpMessageAttributesMatchers.hasStatusCode;
+import static java.util.Collections.emptyMap;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.startsWith;
+import static org.junit.Assert.assertThat;
+
 import org.mule.extension.http.api.HttpResponseAttributes;
 import org.mule.runtime.api.message.Message;
 import org.mule.runtime.api.metadata.MediaType;

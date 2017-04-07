@@ -9,7 +9,7 @@ package org.mule.test.module.http.functional.listener;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.METHOD_NOT_ALLOWED;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.NOT_FOUND;
 import static org.mule.service.http.api.HttpConstants.Method.GET;
-import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+import static org.mule.test.allure.AllureConstants.HttpFeature.HTTP_EXTENSION;
 import static org.mule.test.module.http.functional.matcher.HttpResponseReasonPhraseMatcher.hasReasonPhrase;
 import static org.mule.test.module.http.functional.matcher.HttpResponseStatusCodeMatcher.hasStatusCode;
 import static org.apache.http.HttpStatus.SC_NOT_FOUND;
