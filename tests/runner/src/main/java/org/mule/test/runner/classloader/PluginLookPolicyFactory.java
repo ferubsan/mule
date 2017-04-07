@@ -46,6 +46,10 @@ public class PluginLookPolicyFactory {
       LookupStrategy lookUpPolicyStrategy = getClassLoaderLookupStrategy(pluginClassification, dependencyPluginClassification);
 
       for (String exportedPackage : dependencyPluginClassification.getExportedPackages()) {
+        if (parentLookupPolicies.getLookupStrategy(exportedPackage) != null) {
+          // TODO(pablo.kraan): tests - is OK to skip it?
+          continue;
+        }
         pluginsLookupPolicies.put(exportedPackage, lookUpPolicyStrategy);
       }
 

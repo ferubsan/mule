@@ -36,7 +36,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 @Ignore
-// TODO(pablo.kraan): tests - fix this test
+// TODO(pablo.kraan): tests - fix this test - requires a external extension
 public class PetStoreSourceRetryPolicyProviderTestCase extends AbstractExtensionFunctionalTestCase {
 
   public static final int TIMEOUT_MILLIS = 1000;

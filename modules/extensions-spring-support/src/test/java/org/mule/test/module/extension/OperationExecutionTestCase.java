@@ -61,13 +61,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.hamcrest.Matchers;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test
 public class OperationExecutionTestCase extends AbstractExtensionFunctionalTestCase {
 
   public static final String HEISENBERG = "heisenberg";

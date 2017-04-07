@@ -24,11 +24,13 @@
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-heisenberg-extension</artifactId>
             <version>${project.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mule.tests</groupId>
             <artifactId>mule-vegan-extension</artifactId>
             <version>${project.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

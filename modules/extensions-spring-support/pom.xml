@@ -178,5 +178,11 @@
             <classifier>mule-service</classifier>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mule.tests</groupId>
+            <artifactId>mule-tests-unit</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

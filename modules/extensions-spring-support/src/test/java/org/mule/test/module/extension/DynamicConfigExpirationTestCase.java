@@ -14,11 +14,8 @@ import org.mule.tck.probe.JUnitLambdaProbe;
 import org.mule.tck.probe.PollingProber;
 import org.mule.test.heisenberg.extension.HeisenbergExtension;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test
 public class DynamicConfigExpirationTestCase extends AbstractExtensionFunctionalTestCase {
 
   @Override

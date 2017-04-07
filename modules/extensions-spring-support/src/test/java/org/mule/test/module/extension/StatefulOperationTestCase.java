@@ -16,11 +16,8 @@ import org.mule.test.module.extension.internal.util.ExtensionsTestUtils;
 
 import java.math.BigDecimal;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test
 public class StatefulOperationTestCase extends AbstractExtensionFunctionalTestCase {
 
   private static final String TENANT_1 = "heisenberg";

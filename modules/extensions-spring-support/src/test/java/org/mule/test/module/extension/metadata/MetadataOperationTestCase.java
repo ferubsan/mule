@@ -78,8 +78,6 @@ import java.util.stream.Stream;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test
 public class MetadataOperationTestCase extends AbstractMetadataOperationTestCase {
 
   private static final String MESSAGE_ATTRIBUTES_PERSON_TYPE_METADATA = "messageAttributesPersonTypeMetadata";
@@ -323,6 +321,8 @@ public class MetadataOperationTestCase extends AbstractMetadataOperationTestCase
   }
 
   @Test
+  @Ignore
+  // TODO(pablo.kraan): tests - all variations of this test fail. Probably some problem with CCL
   public void resolverContentWithContextClassLoader() throws Exception {
     location = Location.builder().globalName(OUTPUT_METADATA_WITH_KEY_ID).addProcessorsPart().addIndexPart(0).build();
     resolveTestWithContextClassLoader(RESOLVER_CONTENT_WITH_CONTEXT_CLASSLOADER,
@@ -330,6 +330,8 @@ public class MetadataOperationTestCase extends AbstractMetadataOperationTestCase
   }
 
   @Test
+  @Ignore
+  // TODO(pablo.kraan): tests - all variations of this test fail. Probably some problem with CCL
   public void resolverOutputWithContextClassLoader() throws Exception {
     location = Location.builder().globalName(OUTPUT_METADATA_WITH_KEY_ID).addProcessorsPart().addIndexPart(0).build();
     resolveTestWithContextClassLoader(RESOLVER_OUTPUT_WITH_CONTEXT_CLASSLOADER,

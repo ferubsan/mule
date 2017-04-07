@@ -21,13 +21,10 @@ import org.mule.test.marvel.model.MissileProofVillain;
 import org.mule.test.marvel.model.Villain;
 import org.mule.test.module.extension.AbstractExtensionFunctionalTestCase;
 
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test
 public class NonBlockingOperationsTestCase extends AbstractExtensionFunctionalTestCase {
 
   @Rule

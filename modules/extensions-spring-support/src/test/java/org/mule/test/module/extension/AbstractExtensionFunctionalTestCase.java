@@ -10,9 +10,16 @@ package org.mule.test.module.extension;
 import org.mule.functional.junit4.MuleArtifactFunctionalTestCase;
 import org.mule.test.runner.ArtifactClassLoaderRunnerConfig;
 
-@ArtifactClassLoaderRunnerConfig(plugins = {"org.mule.tests:mule-heisenberg-extension", "org.mule.tests:mule-vegan-extension",
-    "org.mule.tests:mule-petstore-extension", "org.mule.tests:mule-metadata-extension", "org.mule.tests:mule-marvel-extension",
-    "org.mule.tests:mule-tx-extension"})
+@ArtifactClassLoaderRunnerConfig(
+    plugins = {"org.mule.tests:mule-heisenberg-extension", "org.mule.tests:mule-vegan-extension",
+        "org.mule.tests:mule-petstore-extension", "org.mule.tests:mule-metadata-extension",
+        "org.mule.tests:mule-marvel-extension", "org.mule.tests:mule-subtypes-extension",
+        "org.mule.tests:mule-tx-extension"},
+    testExclusions = {"org.mule.tests:mule-heisenberg-extension:*:*:*", "org.mule.tests:mule-vegan-extension:*:*:*",
+        "org.mule.tests:mule-petstore-extension:*:*:*", "org.mule.tests:mule-metadata-extension:*:*:*",
+        "org.mule.tests:mule-marvel-extension:*:*:*", "org.mule.tests:mule-subtypes-extension:*:*:*",
+        "org.mule.tests:mule-tx-extension:*:*:*"},
+    sharedRuntimeLibs = {"org.mule.tests:mule-tests-unit"})
 public class AbstractExtensionFunctionalTestCase extends MuleArtifactFunctionalTestCase {
 
 }

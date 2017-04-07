@@ -30,7 +30,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 @Ignore
-// TODO(pablo.kraan): tests - fix this test
+// TODO(pablo.kraan): tests - fix this test - requires a external extension
 public class PetStoreRetryPolicyProviderConnectionTestCase extends AbstractExtensionFunctionalTestCase {
 
   public static final String CONNECTION_FAIL = "Connection fail";

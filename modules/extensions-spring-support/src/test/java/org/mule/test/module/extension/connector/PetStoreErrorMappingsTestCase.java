@@ -32,7 +32,7 @@ import ru.yandex.qatools.allure.annotations.Stories;
 @Features("Error Handling")
 @Stories("Error Mappings")
 @Ignore
-// TODO(pablo.kraan): tests - fix this test
+// TODO(pablo.kraan): tests - fix this test - requires a external extension
 public class PetStoreErrorMappingsTestCase extends AbstractExtensionFunctionalTestCase {
 
   private static final String CONNECT_ERROR_MESSAGE = "Could not connect.";

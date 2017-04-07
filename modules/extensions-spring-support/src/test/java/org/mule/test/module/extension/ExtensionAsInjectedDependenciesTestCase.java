@@ -18,11 +18,8 @@ import org.mule.test.module.extension.internal.util.ExtensionsTestUtils;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test
 public class ExtensionAsInjectedDependenciesTestCase extends AbstractExtensionFunctionalTestCase {
 
   private static final String STATIC_HEISENBERG = "staticHeisenberg";

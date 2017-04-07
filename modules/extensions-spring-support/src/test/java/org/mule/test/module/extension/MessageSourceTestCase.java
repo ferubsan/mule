@@ -16,13 +16,11 @@ import org.mule.test.heisenberg.extension.HeisenbergExtension;
 
 import java.math.BigDecimal;
 
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test
 public class MessageSourceTestCase extends AbstractExtensionFunctionalTestCase {
 
   public static final int TIMEOUT_MILLIS = 5000;
@@ -34,6 +32,11 @@ public class MessageSourceTestCase extends AbstractExtensionFunctionalTestCase {
   @Override
   protected String getConfigFile() {
     return "heisenberg-source-config.xml";
+  }
+
+  @Before
+  public void setUp() throws Exception {
+    sourceTimesStarted = 0;
   }
 
   @Test

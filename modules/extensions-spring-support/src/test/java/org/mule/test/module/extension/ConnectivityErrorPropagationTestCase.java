@@ -39,7 +39,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 @Ignore
-// TODO(pablo.kraan): tests - fix this
+// TODO(pablo.kraan): tests - fix this - requires an external extension
 public class ConnectivityErrorPropagationTestCase extends AbstractExtensionFunctionalTestCase {
 
   private static final ModuleException OAUTH_MODULE_EXCEPTION = new ModuleException(null, OAUTH2);
@@ -53,12 +53,6 @@ public class ConnectivityErrorPropagationTestCase extends AbstractExtensionFunct
 
   @Rule
   public SystemProperty rule = TestConnectivityUtils.disableAutomaticTestConnectivity();
-
-  // TODO(pablo.kraan): tests - how can use a inner class that is an extension?
-  //@Override                                     y
-  //protected Class<?>[] getAnnotatedExtensionClasses() {
-  //  return new Class[] {SomeExtension.class};
-  //}
 
   @Before
   public void setUp() {

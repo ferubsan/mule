@@ -22,11 +22,8 @@ import java.util.function.BooleanSupplier;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test
 public class TransactionalSourceTestCase extends AbstractExtensionFunctionalTestCase {
 
   @Override
