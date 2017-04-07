@@ -6,6 +6,8 @@
  */
 package org.mule.service.http.api.client.proxy;
 
+import static org.mule.test.allure.feature.AllureFeature.HTTP_SERVICE;
+import static org.mule.test.allure.story.AllureHttpStory.HTTP_PROXY_CONFIG_BUILDER;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
@@ -14,8 +16,8 @@ import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
-@Features("HTTP Service")
-@Stories("Proxy Config Builder")
+@Features(HTTP_SERVICE)
+@Stories(HTTP_PROXY_CONFIG_BUILDER)
 public class ProxyConfigBuilderTest extends AbstractProxyConfigTestCase<ProxyConfigBuilder> {
 
   private ProxyConfigBuilder proxyConfigBuilder = ProxyConfig.builder();

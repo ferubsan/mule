@@ -8,6 +8,7 @@ package org.mule.test.module.http.functional.requester;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
+import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
 
 import org.mule.runtime.core.api.construct.Flow;
 import org.mule.runtime.core.exception.MessagingException;
@@ -20,7 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jetty.server.Request;
 import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
+@Features(HTTP_EXTENSION)
 public class HttpRequestMaxConnectionsTestCase extends AbstractHttpRequestTestCase {
 
   private Latch messageArrived = new Latch();

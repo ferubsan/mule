@@ -6,6 +6,8 @@
  */
 package org.mule.service.http.api.domain.response;
 
+import static org.mule.test.allure.feature.AllureFeature.HTTP_SERVICE;
+import static org.mule.test.allure.story.AllureHttpStory.HTTP_RESPONSE_BUILDER;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.instanceOf;
@@ -24,8 +26,8 @@ import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
-@Features("HTTP Service")
-@Stories("Response Builder")
+@Features(HTTP_SERVICE)
+@Stories(HTTP_RESPONSE_BUILDER)
 public class HttpResponseBuilderTestCase {
 
   private HttpResponseBuilder builder = HttpResponse.builder();

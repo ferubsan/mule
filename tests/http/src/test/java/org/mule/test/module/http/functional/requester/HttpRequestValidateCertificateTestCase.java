@@ -11,13 +11,17 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+
 import org.mule.runtime.core.exception.MessagingException;
 import org.mule.runtime.core.api.Event;
 
 import java.security.GeneralSecurityException;
 
 import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
+@Features(HTTP_EXTENSION)
 public class HttpRequestValidateCertificateTestCase extends AbstractHttpRequestTestCase {
 
   @Override

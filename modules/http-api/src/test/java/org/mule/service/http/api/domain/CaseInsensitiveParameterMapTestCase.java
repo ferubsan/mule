@@ -7,6 +7,8 @@
 
 package org.mule.service.http.api.domain;
 
+import static org.mule.test.allure.feature.AllureFeature.HTTP_SERVICE;
+import static org.mule.test.allure.story.AllureHttpStory.HTTP_MULTI_MAP;
 import static java.util.Arrays.asList;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -16,8 +18,8 @@ import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
-@Features("HTTP Service")
-@Stories("Multi Map")
+@Features(HTTP_SERVICE)
+@Stories(HTTP_MULTI_MAP)
 public class CaseInsensitiveParameterMapTestCase extends ParameterMapTestCase {
 
   @Override

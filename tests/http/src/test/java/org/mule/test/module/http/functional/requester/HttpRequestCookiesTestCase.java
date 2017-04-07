@@ -10,6 +10,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mule.service.http.api.HttpHeaders.Names.COOKIE;
+import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
 
 import com.google.common.collect.Sets;
 
@@ -21,7 +22,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
+@Features(HTTP_EXTENSION)
 public class HttpRequestCookiesTestCase extends AbstractHttpRequestTestCase {
 
   private static final String COOKIE_ROOT_PATH_LOCAL_DOMAIN = "cookieRootPathLocalDomain";

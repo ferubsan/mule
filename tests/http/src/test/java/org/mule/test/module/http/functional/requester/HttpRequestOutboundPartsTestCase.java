@@ -17,6 +17,7 @@ import static org.mule.runtime.api.metadata.MediaType.TEXT;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.OK;
 import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_DISPOSITION;
 import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_TYPE;
+import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
 import static org.mule.test.module.http.functional.matcher.HttpMessageAttributesMatchers.hasStatusCode;
 import org.mule.extension.http.api.HttpResponseAttributes;
 import org.mule.runtime.api.message.Message;
@@ -43,7 +44,9 @@ import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.util.MultiPartInputStreamParser;
 import org.junit.Rule;
 import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
+@Features(HTTP_EXTENSION)
 public class HttpRequestOutboundPartsTestCase extends AbstractHttpRequestTestCase {
 
   private static final String TEST_FILE_NAME = "auth/realm.properties";

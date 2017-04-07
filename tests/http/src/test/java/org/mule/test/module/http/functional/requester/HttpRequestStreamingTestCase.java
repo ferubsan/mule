@@ -15,6 +15,8 @@ import static org.junit.Assert.assertThat;
 import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_LENGTH;
 import static org.mule.service.http.api.HttpHeaders.Names.TRANSFER_ENCODING;
 import static org.mule.service.http.api.HttpHeaders.Values.CHUNKED;
+import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
+
 import org.mule.runtime.core.api.Event;
 import org.mule.runtime.core.util.IOUtils;
 
@@ -28,7 +30,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jetty.server.Request;
 import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
+@Features(HTTP_EXTENSION)
 public class HttpRequestStreamingTestCase extends AbstractHttpRequestTestCase {
 
   private static final String HEADERS = "headers";

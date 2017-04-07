@@ -10,6 +10,7 @@ package org.mule.test.module.http.functional.requester;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
 
 import org.mule.runtime.core.exception.MessagingException;
 import org.mule.runtime.core.util.concurrent.Latch;
@@ -23,7 +24,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jetty.server.Request;
 import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
+@Features(HTTP_EXTENSION)
 public class HttpRequestTimeoutTestCase extends AbstractHttpRequestTestCase {
 
   private static int TEST_TIMEOUT = 2000;

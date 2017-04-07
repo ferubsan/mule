@@ -14,6 +14,7 @@ import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.hamcrest.Matchers.hasItem;
 import static org.mule.service.http.api.HttpConstants.Method.GET;
 import static org.mule.service.http.api.HttpHeaders.Names.CONTENT_TYPE;
+import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
 
 import org.mule.runtime.core.util.IOUtils;
 import org.mule.service.http.api.domain.entity.ByteArrayHttpEntity;
@@ -25,7 +26,9 @@ import org.mule.test.module.http.functional.AbstractHttpTestCase;
 
 import org.junit.Rule;
 import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
+@Features(HTTP_EXTENSION)
 public class HttpRequestLaxContentTypeTestCase extends AbstractHttpTestCase {
 
   @Rule

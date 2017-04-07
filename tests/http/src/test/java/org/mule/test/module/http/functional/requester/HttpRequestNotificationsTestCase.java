@@ -13,6 +13,7 @@ import static org.mule.runtime.core.api.context.notification.ServerNotification.
 import static org.mule.runtime.core.context.notification.ConnectorMessageNotification.MESSAGE_REQUEST_BEGIN;
 import static org.mule.runtime.core.context.notification.ConnectorMessageNotification.MESSAGE_REQUEST_END;
 import static org.mule.service.http.api.HttpConstants.HttpStatus.OK;
+import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
 import static org.mule.test.module.http.functional.TestConnectorMessageNotificationListener.register;
 import static org.mule.test.module.http.functional.matcher.HttpMessageAttributesMatchers.hasReasonPhrase;
 import static org.mule.test.module.http.functional.matcher.HttpMessageAttributesMatchers.hasStatusCode;
@@ -27,9 +28,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Features;
 
 //TODO: MULE-10340 - Add notifications to HTTP request
 @Ignore
+@Features(HTTP_EXTENSION)
 public class HttpRequestNotificationsTestCase extends AbstractHttpRequestTestCase {
 
   @Override

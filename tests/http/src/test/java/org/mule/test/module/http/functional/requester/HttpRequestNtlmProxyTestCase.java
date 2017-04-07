@@ -11,7 +11,11 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mule.service.http.api.HttpHeaders.Names.PROXY_AUTHENTICATE;
 import static org.mule.service.http.api.HttpHeaders.Names.PROXY_AUTHORIZATION;
+import static org.mule.test.allure.feature.AllureFeature.HTTP_EXTENSION;
 
+import ru.yandex.qatools.allure.annotations.Features;
+
+@Features(HTTP_EXTENSION)
 public class HttpRequestNtlmProxyTestCase extends AbstractNtlmTestCase {
 
   public HttpRequestNtlmProxyTestCase() {
