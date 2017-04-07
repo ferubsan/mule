@@ -4,25 +4,19 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.module.extension.internal.streaming;
+package org.mule.test.module.extension.streaming;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import org.mule.functional.junit4.ExtensionFunctionalTestCase;
 import org.mule.runtime.core.streaming.StreamingManager;
 import org.mule.runtime.core.streaming.StreamingStatistics;
 import org.mule.tck.probe.JUnitLambdaProbe;
 import org.mule.tck.probe.PollingProber;
-import org.mule.test.marvel.MarvelExtension;
+import org.mule.test.module.extension.AbstractExtensionFunctionalTestCase;
 
-abstract class AbstractStreamingExtensionTestCase extends ExtensionFunctionalTestCase {
+abstract class AbstractStreamingExtensionTestCase extends AbstractExtensionFunctionalTestCase {
 
   private StreamingManager streamingManager;
-
-  @Override
-  protected Class<?>[] getAnnotatedExtensionClasses() {
-    return new Class<?>[] {MarvelExtension.class};
-  }
 
   @Override
   protected void doSetUp() throws Exception {

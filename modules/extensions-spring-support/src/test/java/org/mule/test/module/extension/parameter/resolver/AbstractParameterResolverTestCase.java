@@ -4,12 +4,10 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.module.extension.internal.parameter.resolver;
+package org.mule.test.module.extension.parameter.resolver;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import org.hamcrest.Matcher;
-import org.mule.functional.junit4.ExtensionFunctionalTestCase;
 import org.mule.runtime.api.exception.MuleException;
 import org.mule.runtime.api.message.Attributes;
 import org.mule.runtime.extension.api.annotation.Extension;
@@ -24,8 +22,11 @@ import org.mule.runtime.extension.api.runtime.source.Source;
 import org.mule.runtime.extension.api.runtime.source.SourceCallback;
 import org.mule.test.heisenberg.extension.model.DifferedKnockableDoor;
 import org.mule.test.heisenberg.extension.model.KnockeableDoor;
+import org.mule.test.module.extension.AbstractExtensionFunctionalTestCase;
 
-public abstract class AbstractParameterResolverTestCase extends ExtensionFunctionalTestCase {
+import org.hamcrest.Matcher;
+
+public abstract class AbstractParameterResolverTestCase extends AbstractExtensionFunctionalTestCase {
 
   protected <T> T getPayload(String flowName) throws Exception {
     return (T) flowRunner(flowName).run().getMessage().getPayload().getValue();

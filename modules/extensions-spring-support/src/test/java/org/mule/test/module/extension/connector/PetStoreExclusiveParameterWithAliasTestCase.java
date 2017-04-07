@@ -4,24 +4,17 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.module.extension.internal.connector;
+package org.mule.test.module.extension.connector;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-
-import org.mule.functional.junit4.InvalidExtensionConfigTestCase;
+import org.mule.test.module.extension.InvalidExtensionConfigTestCase;
 import org.mule.test.petstore.extension.ExclusivePetBreeder;
-import org.mule.test.petstore.extension.PetStoreConnector;
 
 import org.junit.Test;
 
 public class PetStoreExclusiveParameterWithAliasTestCase extends InvalidExtensionConfigTestCase {
-
-  @Override
-  protected Class<?>[] getAnnotatedExtensionClasses() {
-    return new Class<?>[] {PetStoreConnector.class};
-  }
 
   @Override
   protected String getConfigFile() {

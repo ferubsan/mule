@@ -4,12 +4,14 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.module.extension.internal.config;
+package org.mule.test.module.extension.connector;
 
-public class SourceWithExpressionConfigReference extends OperationWithExpressionConfigReference {
+import org.mule.test.module.extension.InvalidExtensionConfigTestCase;
+
+public class PetStoreExclusiveParameterTestCase extends InvalidExtensionConfigTestCase {
 
   @Override
   protected String getConfigFile() {
-    return "source-with-expression-config-ref.xml";
+    return "petstore-exclusive-parameters-config.xml";
   }
 }

@@ -8,7 +8,10 @@
 package org.mule.test.module.extension;
 
 import org.mule.functional.junit4.MuleArtifactFunctionalTestCase;
+import org.mule.runtime.api.meta.model.ExtensionModel;
 import org.mule.test.runner.ArtifactClassLoaderRunnerConfig;
+
+import java.util.Optional;
 
 @ArtifactClassLoaderRunnerConfig(
     plugins = {"org.mule.tests:mule-heisenberg-extension", "org.mule.tests:mule-vegan-extension",
@@ -22,4 +25,7 @@ import org.mule.test.runner.ArtifactClassLoaderRunnerConfig;
     sharedRuntimeLibs = {"org.mule.tests:mule-tests-unit"})
 public class AbstractExtensionFunctionalTestCase extends MuleArtifactFunctionalTestCase {
 
+  protected Optional<ExtensionModel> getExtensionModel(String name) {
+    return muleContext.getExtensionManager().getExtension(name);
+  }
 }

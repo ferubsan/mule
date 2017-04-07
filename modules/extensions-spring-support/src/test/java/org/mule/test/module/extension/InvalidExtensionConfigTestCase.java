@@ -4,8 +4,9 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.functional.junit4;
+package org.mule.test.module.extension;
 
+import org.mule.functional.junit4.ExtensionFunctionalTestCase;
 import org.mule.runtime.api.lifecycle.InitialisationException;
 
 import org.junit.Assert;
@@ -21,7 +22,7 @@ import org.junit.rules.ExpectedException;
  *
  * @since 4.0
  */
-public abstract class InvalidExtensionConfigTestCase extends ExtensionFunctionalTestCase {
+public abstract class InvalidExtensionConfigTestCase extends AbstractExtensionFunctionalTestCase {
 
   @Rule
   public ExpectedException expectedException = ExpectedException.none();

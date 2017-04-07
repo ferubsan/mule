@@ -4,26 +4,19 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.module.extension.internal.connector;
+package org.mule.test.module.extension.connector;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
+import org.mule.test.module.extension.InvalidExtensionConfigTestCase;
+
 import org.junit.rules.ExpectedException;
-import org.mule.functional.junit4.InvalidExtensionConfigTestCase;
-import org.mule.runtime.api.lifecycle.InitialisationException;
-import org.mule.test.petstore.extension.PetStoreConnector;
 
 public class PetStoreMissingRequiredParameterInsidePojoTestCase extends InvalidExtensionConfigTestCase {
 
   @Override
   protected String getConfigFile() {
     return "petstore-missing-required-parameter.xml";
-  }
-
-  @Override
-  protected Class<?>[] getAnnotatedExtensionClasses() {
-    return new Class<?>[] {PetStoreConnector.class};
   }
 
   @Override

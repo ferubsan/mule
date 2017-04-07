@@ -4,7 +4,7 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.module.extension.internal.streaming;
+package org.mule.test.module.extension.streaming;
 
 import static org.apache.commons.lang.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -24,7 +24,6 @@ import org.mule.runtime.core.api.construct.Flow;
 import org.mule.runtime.core.util.IOUtils;
 import org.mule.tck.probe.JUnitLambdaProbe;
 import org.mule.tck.probe.PollingProber;
-import org.mule.test.marvel.MarvelExtension;
 
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -51,11 +50,6 @@ public class BytesStreamingExtensionTestCase extends AbstractStreamingExtensionT
   }
 
   private String data = randomAlphabetic(2048);
-
-  @Override
-  protected Class<?>[] getAnnotatedExtensionClasses() {
-    return new Class<?>[] {MarvelExtension.class};
-  }
 
   @Override
   protected String getConfigFile() {

@@ -4,7 +4,7 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.module.extension.internal.parameter.resolver;
+package org.mule.test.module.extension.parameter.resolver;
 
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.hasItem;
@@ -17,20 +17,20 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 import static org.junit.rules.ExpectedException.none;
 import static org.mule.runtime.extension.api.annotation.param.Optional.PAYLOAD;
+import org.mule.runtime.api.exception.MuleRuntimeException;
+import org.mule.runtime.core.api.transformer.TransformerException;
+import org.mule.runtime.core.exception.MessagingException;
+import org.mule.runtime.extension.api.runtime.operation.ParameterResolver;
+import org.mule.test.heisenberg.extension.model.Ricin;
+import org.mule.test.heisenberg.extension.model.Weapon;
+
+import java.util.Optional;
+
 import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.mockito.ArgumentMatcher;
-import org.mule.runtime.api.exception.MuleRuntimeException;
-import org.mule.runtime.core.api.transformer.TransformerException;
-import org.mule.runtime.core.exception.MessagingException;
-import org.mule.runtime.extension.api.runtime.operation.ParameterResolver;
-import org.mule.test.heisenberg.extension.HeisenbergExtension;
-import org.mule.test.heisenberg.extension.model.Ricin;
-import org.mule.test.heisenberg.extension.model.Weapon;
-
-import java.util.Optional;
 
 public class ParameterResolverOperationExecutionTestCase extends AbstractParameterResolverTestCase {
 
@@ -39,11 +39,6 @@ public class ParameterResolverOperationExecutionTestCase extends AbstractParamet
 
   private static final Matcher<? super Weapon> WEAPON_MATCHER =
       allOf(notNullValue(), instanceOf(Ricin.class), hasProperty("microgramsPerKilo", is(100L)));
-
-  @Override
-  protected Class<?>[] getAnnotatedExtensionClasses() {
-    return new Class<?>[] {HeisenbergExtension.class};
-  }
 
   @Override
   protected String[] getConfigFiles() {

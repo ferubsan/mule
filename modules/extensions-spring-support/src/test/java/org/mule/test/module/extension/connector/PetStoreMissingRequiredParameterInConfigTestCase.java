@@ -4,22 +4,17 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.module.extension.internal.connector;
+package org.mule.test.module.extension.connector;
+
+import org.mule.test.module.extension.InvalidExtensionConfigTestCase;
 
 import org.junit.rules.ExpectedException;
-import org.mule.functional.junit4.InvalidExtensionConfigTestCase;
-import org.mule.test.petstore.extension.PetStoreConnector;
 
 public class PetStoreMissingRequiredParameterInConfigTestCase extends InvalidExtensionConfigTestCase {
 
   @Override
   protected String getConfigFile() {
     return "petstore-missing-required-parameter-in-config.xml";
-  }
-
-  @Override
-  protected Class<?>[] getAnnotatedExtensionClasses() {
-    return new Class<?>[] {PetStoreConnector.class};
   }
 
   @Override
