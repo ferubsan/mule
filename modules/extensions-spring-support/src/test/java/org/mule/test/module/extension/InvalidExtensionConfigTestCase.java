@@ -6,7 +6,6 @@
  */
 package org.mule.test.module.extension;
 
-import org.mule.functional.junit4.ExtensionFunctionalTestCase;
 import org.mule.runtime.api.lifecycle.InitialisationException;
 
 import org.junit.Assert;
@@ -15,7 +14,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 /**
- * An {@link ExtensionFunctionalTestCase} which is expected to point to a somewhat invalid config. The test fails if the config is
+ * An {@link AbstractExtensionFunctionalTestCase} which is expected to point to a somewhat invalid config. The test fails if the config is
  * parsed correctly.
  * <p>
  * This class does not require to implement any method annotation with {@link Test}

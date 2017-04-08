@@ -103,6 +103,7 @@ public class RegionClassLoader extends MuleDeployableArtifactClassLoader {
                                                          filter));
 
     filter.getExportedClassPackages().forEach(p -> {
+      // TODO(pablo.kraan): tests - needed to add this in order to make it work with extensions - ugly as shit
       if (packageMapping.containsKey(p)) {
         System.out.println("Package: " + p + " already defined");
       } else {
@@ -173,7 +174,6 @@ public class RegionClassLoader extends MuleDeployableArtifactClassLoader {
 
       final ArtifactClassLoader artifactClassLoader = packageMapping.get(packageName);
       if (artifactClassLoader != null) {
-        // TODO(pablo.kraan): tests - needed to add this in order to make it work with extensions - ugly as shit
         try {
           return artifactClassLoader.findLocalClass(name);
         } catch (ClassNotFoundException e) {

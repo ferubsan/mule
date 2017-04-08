@@ -47,7 +47,8 @@ public class PluginLookPolicyFactory {
 
       for (String exportedPackage : dependencyPluginClassification.getExportedPackages()) {
         if (parentLookupPolicies.getLookupStrategy(exportedPackage) != null) {
-          // TODO(pablo.kraan): tests - is OK to skip it?
+          // TODO(pablo.kraan): tests - this is needed because extensions blunded as plain jars do not contain the right info about what
+          // dependencies can be exported and they are not properly checked
           continue;
         }
         pluginsLookupPolicies.put(exportedPackage, lookUpPolicyStrategy);
