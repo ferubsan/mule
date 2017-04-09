@@ -9,31 +9,14 @@ package org.mule.test.module.extension.connector;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import org.mule.runtime.api.connection.ConnectionException;
-import org.mule.runtime.api.connection.ConnectionProvider;
-import org.mule.runtime.api.connection.ConnectionValidationResult;
 import org.mule.runtime.core.exception.MessagingException;
-import org.mule.runtime.extension.api.annotation.Alias;
-import org.mule.runtime.extension.api.annotation.Extension;
-import org.mule.runtime.extension.api.annotation.Operations;
-import org.mule.runtime.extension.api.annotation.connectivity.ConnectionProviders;
-import org.mule.runtime.extension.api.annotation.dsl.xml.Xml;
-import org.mule.runtime.extension.api.annotation.param.Connection;
 import org.mule.test.module.extension.AbstractExtensionFunctionalTestCase;
-import org.mule.test.petstore.extension.PetStoreClient;
-import org.mule.test.petstore.extension.PetStoreConnectionProvider;
-import org.mule.test.petstore.extension.PetStoreConnector;
-import org.mule.test.petstore.extension.PetStoreOperations;
 
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test - requires a external extension
 public class PetStoreRetryPolicyProviderConnectionTestCase extends AbstractExtensionFunctionalTestCase {
-
-  public static final String CONNECTION_FAIL = "Connection fail";
 
   @Rule
   public ExpectedException exception = ExpectedException.none();
@@ -71,47 +54,5 @@ public class PetStoreRetryPolicyProviderConnectionTestCase extends AbstractExten
     exception.expect(MessagingException.class);
     exception.expectCause(is(instanceOf(Throwable.class)));
     runFlow("fail-operation-with-not-handled-throwable");
-
   }
-
-  @Extension(name = "petstore", description = "PetStore Test connector")
-  @Operations(PetStoreOperationsWithFailures.class)
-  @ConnectionProviders({PooledPetStoreConnectionProviderWithFailureInvalidConnection.class,
-      PooledPetStoreConnectionProviderWithValidConnection.class})
-  @Xml(namespace = "http://www.mulesoft.org/schema/mule/petstore", prefix = "petstore")
-  public static class PetStoreConnectorWithConnectionFailure extends PetStoreConnector {
-  }
-
-  @Alias("valid")
-  public static class PooledPetStoreConnectionProviderWithValidConnection extends PetStoreConnectionProvider<PetStoreClient>
-      implements ConnectionProvider<PetStoreClient> {
-
-  }
-
-  @Alias("invalid")
-  public static class PooledPetStoreConnectionProviderWithFailureInvalidConnection
-      extends PetStoreConnectionProvider<PetStoreClient> implements ConnectionProvider<PetStoreClient> {
-
-    @Override
-    public ConnectionValidationResult validate(PetStoreClient connection) {
-      return ConnectionValidationResult.failure(CONNECTION_FAIL, new Exception("Invalid credentials"));
-    }
-  }
-
-  public static class PetStoreOperationsWithFailures extends PetStoreOperations {
-
-    public Integer failConnection(@Connection PetStoreClient client) throws ConnectionException {
-      throw new ConnectionException(CONNECTION_FAIL);
-    }
-
-    public Integer failOperationWithException(@Connection PetStoreClient client) throws Exception {
-      throw new Exception(CONNECTION_FAIL);
-    }
-
-    public Integer failOperationWithThrowable(@Connection PetStoreClient client) throws Throwable {
-      throw new Throwable(CONNECTION_FAIL);
-    }
-  }
-
-
 }
