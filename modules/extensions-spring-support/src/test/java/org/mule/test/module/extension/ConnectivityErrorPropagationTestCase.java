@@ -10,45 +10,24 @@ import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.mule.functional.junit4.matchers.ThrowableCauseMatcher.hasCause;
-import static org.mule.runtime.api.connection.ConnectionValidationResult.failure;
 import static org.mule.tck.junit4.matcher.ErrorTypeMatcher.errorType;
 import static org.mule.tck.util.TestConnectivityUtils.disableAutomaticTestConnectivity;
 import static org.mule.test.heisenberg.extension.HeisenbergErrors.HEALTH;
 import static org.mule.test.heisenberg.extension.HeisenbergErrors.OAUTH2;
-import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.api.connection.ConnectionException;
-import org.mule.runtime.api.connection.ConnectionValidationResult;
-import org.mule.runtime.extension.api.annotation.Extension;
-import org.mule.runtime.extension.api.annotation.Operations;
-import org.mule.runtime.extension.api.annotation.connectivity.ConnectionProviders;
-import org.mule.runtime.extension.api.annotation.error.ErrorTypes;
-import org.mule.runtime.extension.api.annotation.param.Connection;
-import org.mule.runtime.extension.api.annotation.param.Optional;
-import org.mule.runtime.extension.api.annotation.param.Parameter;
-import org.mule.runtime.extension.api.annotation.param.UseConfig;
 import org.mule.runtime.extension.api.exception.ModuleException;
 import org.mule.tck.junit4.rule.SystemProperty;
 import org.mule.tck.util.TestConnectivityUtils;
-import org.mule.test.heisenberg.extension.HeisenbergErrors;
+import org.mule.test.some.extension.CustomConnectionException;
 
 import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this - requires an external extension
 public class ConnectivityErrorPropagationTestCase extends AbstractExtensionFunctionalTestCase {
 
-  private static final ModuleException OAUTH_MODULE_EXCEPTION = new ModuleException(null, OAUTH2);
-  private static final ModuleException HEALTH_MODULE_EXCEPTION = new ModuleException(null, HEALTH);
-  private static final CustomConnectionException DOMAIN_HEALTH_CONNECTION_EXCEPTION =
-      new CustomConnectionException(HEALTH_MODULE_EXCEPTION);
-  private static final CustomConnectionException DOMAIN_OAUTH_CONNECTION_EXCEPTION =
-      new CustomConnectionException(OAUTH_MODULE_EXCEPTION);
-  private static final ConnectionException CONNECTION_EXCEPTION = new ConnectionException("Some Error", HEALTH_MODULE_EXCEPTION);
   private TestConnectivityUtils utils;
 
   @Rule
@@ -95,60 +74,4 @@ public class ConnectivityErrorPropagationTestCase extends AbstractExtensionFunct
     utils.assertFailedConnection("failAtValidateWithDomainException", exceptionMatcher, is(errorType(OAUTH2)));
   }
 
-  @Extension(name = "SomeExtension")
-  @ConnectionProviders(ExtConnProvider.class)
-  @ErrorTypes(HeisenbergErrors.class)
-  @Operations(SomeOps.class)
-  public static class SomeExtension {
-
-  }
-
-  public static class ExtConnProvider implements CachedConnectionProvider<String> {
-
-    @Parameter
-    @Optional(defaultValue = "false")
-    public boolean fail;
-
-    @Parameter
-    @Optional(defaultValue = "false")
-    public boolean domainException;
-
-    @Override
-    public String connect() throws ConnectionException {
-      if (fail) {
-        throw domainException
-            ? DOMAIN_HEALTH_CONNECTION_EXCEPTION
-            : CONNECTION_EXCEPTION;
-      }
-      return "";
-    }
-
-    @Override
-    public void disconnect(String connection) {
-
-    }
-
-    @Override
-    public ConnectionValidationResult validate(String connection) {
-      return domainException
-          ? failure("This is a failure", DOMAIN_OAUTH_CONNECTION_EXCEPTION)
-          : failure("This is a failure", OAUTH_MODULE_EXCEPTION);
-    }
-
-
-  }
-
-  public static class CustomConnectionException extends ConnectionException {
-
-    public CustomConnectionException(ModuleException e) {
-      super("This is the message", e);
-    }
-  }
-
-  public static class SomeOps {
-
-    public void someOp(@Connection String conn, @UseConfig SomeExtension ext) {
-
-    }
-  }
 }
