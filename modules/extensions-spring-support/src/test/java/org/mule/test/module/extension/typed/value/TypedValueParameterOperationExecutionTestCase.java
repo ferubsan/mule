@@ -7,12 +7,14 @@
 package org.mule.test.module.extension.typed.value;
 
 import static org.mule.runtime.api.metadata.MediaType.APPLICATION_JSON;
+import static org.mule.test.typedvalue.extension.TypedValueParameterOperations.THIS_IS_A_DEFAULT_STRING;
 import org.mule.runtime.api.metadata.MediaType;
 import org.mule.runtime.core.api.Event;
 import org.mule.runtime.core.api.construct.Flow;
 import org.mule.tck.probe.JUnitLambdaProbe;
 import org.mule.tck.probe.PollingProber;
 import org.mule.test.heisenberg.extension.model.DifferedKnockableDoor;
+import org.mule.test.typedvalue.extension.TypedValueSource;
 import org.mule.test.vegan.extension.VeganProductInformation;
 
 import java.util.ArrayList;
@@ -25,8 +27,6 @@ import java.util.Map;
 import org.junit.After;
 import org.junit.Test;
 
-@org.junit.Ignore
-// TODO(pablo.kraan): tests - requires a non external extension
 public class TypedValueParameterOperationExecutionTestCase extends AbstractTypedValueTestCase {
 
   @Override

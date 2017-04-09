@@ -8,13 +8,12 @@ package org.mule.test.module.extension.typed.value;
 
 import static org.mule.runtime.api.metadata.MediaType.APPLICATION_JSON;
 import org.mule.runtime.api.metadata.MediaType;
+import org.mule.test.typedvalue.extension.TypedValueExtension;
+import org.mule.test.typedvalue.extension.TypedValueSource;
 
 import org.junit.After;
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
-// TODO(pablo.kraan): tests - fix this test - requires aexternal extension
 public class TypedValueParameterOnConfigTestCase extends AbstractTypedValueTestCase {
 
   @Override
@@ -32,8 +31,8 @@ public class TypedValueParameterOnConfigTestCase extends AbstractTypedValueTestC
     TypedValueExtension extension =
         (TypedValueExtension) flowRunner("typedValueOnDynamicConfig").run().getMessage().getPayload().getValue();
 
-    assertTypedValue(extension.stringTypedValue, "string", APPLICATION_JSON, UTF8);
-    assertTypedValue(extension.differedDoor.getAddress(), "address", MediaType.ANY, UTF8);
+    assertTypedValue(extension.getStringTypedValue(), "string", APPLICATION_JSON, UTF8);
+    assertTypedValue(extension.getDifferedDoor().getAddress(), "address", MediaType.ANY, UTF8);
   }
 
   @Test
@@ -41,7 +40,7 @@ public class TypedValueParameterOnConfigTestCase extends AbstractTypedValueTestC
     TypedValueExtension extension =
         (TypedValueExtension) flowRunner("typedValueOnStaticConfig").run().getMessage().getPayload().getValue();
 
-    assertTypedValue(extension.stringTypedValue, "string", MediaType.ANY, null);
-    assertTypedValue(extension.differedDoor.getAddress(), "address", MediaType.ANY, null);
+    assertTypedValue(extension.getStringTypedValue(), "string", MediaType.ANY, null);
+    assertTypedValue(extension.getDifferedDoor().getAddress(), "address", MediaType.ANY, null);
   }
 }

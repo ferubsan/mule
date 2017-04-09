@@ -25,6 +25,7 @@
         <module>subtypes-extension</module>
         <module>some-extension</module>
         <module>implicit-config-extension</module>
+        <module>typed-value-extension</module>
     </modules>
 
     <dependencies>
